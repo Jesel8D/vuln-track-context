@@ -21,3 +21,11 @@ Las contribuciones deben ser concretas, revisables y limitarse al alcance autori
 - Diagramas propuestos: [registro de activos](diagrams/asset_registration_sequence.mmd), [evaluación CVE](diagrams/cve_assessment_sequence.mmd), [ZAP Baseline](diagrams/zap_baseline_sequence.mmd) y [límites de confianza](diagrams/trust_boundaries.mmd).
 
 Los borradores y criterios concretos son **PROPUESTA**; las decisiones y definiciones faltantes son **PENDIENTE**. Consultar los documentos originales y decisiones antes de implementar.
+
+## Auditoría y plan de implementación
+
+- [Estado real de los repositorios](docs/REPOSITORY_READINESS.md) y [plan maestro](docs/IMPLEMENTATION_MASTER_PLAN.md).
+- [Distribución propuesta entre desarrolladores](docs/DEVELOPER_WORK_DISTRIBUTION.md), [estrategia de pruebas](docs/TEST_STRATEGY.md) y [registro de riesgos](docs/TECHNICAL_RISK_REGISTER.md).
+- [Diagrama de dependencias y puntos de integración](diagrams/implementation_roadmap.mmd).
+
+La planificación es **PROPUESTA**; los requisitos establecidos y las decisiones **PENDIENTE** se conservan en los documentos de contexto.
