@@ -21,3 +21,12 @@ Las contribuciones deben ser concretas, revisables y limitarse al alcance autori
 - Diagramas propuestos: [registro de activos](diagrams/asset_registration_sequence.mmd), [evaluación CVE](diagrams/cve_assessment_sequence.mmd), [ZAP Baseline](diagrams/zap_baseline_sequence.mmd) y [límites de confianza](diagrams/trust_boundaries.mmd).
 
 Los borradores y criterios concretos son **PROPUESTA**; las decisiones y definiciones faltantes son **PENDIENTE**. Consultar los documentos originales y decisiones antes de implementar.
+
+## Paquete de decisiones y diagnóstico
+
+- [Diagnóstico de repositorios](docs/REPOSITORY_ACCESS_DIAGNOSTICS.md) y [comparativa técnica](docs/TECHNICAL_DECISION_PACKAGE.md).
+- [Ubicación móvil](docs/MOBILE_REPOSITORY_STRATEGY.md), [contrato de activos](docs/ASSET_CONTRACT_PROPOSAL.md) y [modelo propuesto](docs/DATA_MODEL_PROPOSAL.md).
+- [Identidad y permisos](docs/IDENTITY_AND_ACCESS_PROPOSAL.md), [seguridad de integraciones](docs/INTEGRATION_SECURITY_REVIEW.md) y [matriz de decisiones](docs/DECISION_APPROVAL_CHECKLIST.md).
+- [Flujo propuesto de activos](diagrams/proposed_asset_flow.mmd).
+
+El [plan maestro anterior](https://github.com/Jesel8D/vuln-track-context/blob/9a09af4/docs/IMPLEMENTATION_MASTER_PLAN.md) está en otra rama, pendiente de integración en `dev/jesel`; no se ha fusionado con este paquete. Todos los nuevos diseños siguen **PROPUESTA** y las decisiones correspondientes **PENDIENTE**.

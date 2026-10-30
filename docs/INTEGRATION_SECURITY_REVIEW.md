@@ -1,0 +1,25 @@
+# Seguridad de NVD y ZAP
+
+Consulta de fuentes oficiales: 30-10-2026. Restricciones **ESTABLECIDA** proceden de [requisitos](REQUIREMENTS.md); medidas, arquitectura y valores específicos son **PROPUESTA** y necesitan aprobación. No se realizaron escaneos ni pruebas de aislamiento.
+
+## NVD y CPE
+
+**ESTABLECIDA:** búsqueda asistida, persona elige candidato, CVE potencialmente aplicables hasta verificación y sin réplica completa NVD. **PROPUESTA:** backend consulta servicio oficial por HTTPS, presenta títulos, versión y obsolescencia; no se elige un candidato automáticamente. La aplicación diferencia explícitamente ausencia de candidato, cero CVE tras consulta completa, consulta parcial y proveedor inaccesible. Permitir no seleccionar; versiones genéricas o inciertas requieren decisión y no garantizan filtro aplicable.
+
+**PROPUESTA:** cuota global por instancia y usuario, límite de tamaño/páginas y tiempo, solicitudes en secuencia cuando corresponda, reintentos acotados con backoff para fallos transitorios, cache opcional limitada y TTL aprobado, fecha y cobertura en respuesta; no usar Redis sin aprobación. Solo persistir datos necesarios del activo/consulta; no construir espejo NVD. No exponer ni registrar claves operativas. Resultados de páginas que cambian durante la lectura pueden omitir o duplicar elementos; marcar cobertura e incertidumbre, no afirmar exhaustividad global.
+
+Las páginas oficiales [CVE 2.0](https://nvd.nist.gov/developers/vulnerabilities) y [cuotas/API key](https://nvd.nist.gov/developers/start-here) devolvieron contenido no legible desde este entorno. **PENDIENTE:** verificar límites numéricos, encabezado de clave, errores, semántica `cpeName`/`isVulnerable` y esquema en fuente oficial antes de integrar; no se fijan cifras sin comprobación. La búsqueda indexada de [productos CPE](https://nvd.nist.gov/developers/products) describe paginación, `keywordSearch` y estado de obsolescencia; ver [investigación previa](EXTERNAL_INTEGRATIONS.md). Pruebas con dobles: sin coincidencias, obsoleto, versión ausente, CVSS ausente, timeout, límite, JSON inválido y páginas incompletas.
+
+## ZAP Baseline
+
+**ESTABLECIDA:** solo aplicaciones web de prueba autorizadas y previamente en lista; Baseline, sin Active Scan, URLs arbitrarias, infraestructura de terceros, routers, firewalls, redes completas ni equipos físicos. El [Baseline oficial](https://www.zaproxy.org/docs/docker/baseline-scan/) usa spider y análisis pasivo; el spider realiza solicitudes que pueden producir efectos. Baseline no garantiza detectar vulnerabilidades específicas.
+
+**PROPUESTA de defensa por capas:**
+
+1. Una persona autorizadora registra destino de prueba, esquema, hostname exacto, puerto, alcance, período y evidencias; el usuario envía únicamente `target_id`, sin URL, argumentos, hooks o configuración libre. Autorizador, almacenamiento y revocación siguen **PENDIENTE**.
+2. Backend autoriza solicitud y vuelve a comprobar destino, permiso y vigencia al ejecutar. Normalizar host, IDNA, puertos, IPv4/IPv6 y rechazar credenciales en URL o esquemas no permitidos. DNS no se considera confiable ni suficiente como única comprobación.
+3. **PROPUESTA:** proceso Baseline efímero sin privilegios, con imagen fijada por digest, sin socket Docker, mounts del host, secretos de clientes o acceso a redes de gestión. Un contenedor por sí solo no garantiza aislamiento; red Compose por defecto tampoco. Aplicar política de salida que compruebe cada conexión y su resolución, IP y puerto, incluida toda redirección y referencia del spider; denegar por defecto, bloquear desvíos y probar DNS rebinding y destinos de metadata/loopback. Para laboratorios privados autorizar solo el rango y destino de prueba explícitos, no todas las redes privadas.
+4. Restringir recursos, tiempo, concurrencia y cantidad de solicitudes mediante mecanismos verificables; asegurar que el destino es una aplicación de prueba y tolera el spider. Conservar evento de quién, qué ID de destino, autorización, momento y resultado sin secretos; el informe puede contener URLs o evidencia sensible y requiere control de acceso y retención aprobados.
+5. El script documenta salida 0 sin fallas, 1 con FAIL, 2 con WARN sin FAIL y 3 por otro fallo; no tratar una alerta automáticamente como error operativo. Validar y sanear informe, indicar alertas y cobertura limitada.
+
+**Puerta PENDIENTE antes de habilitar:** demostrar, en laboratorio autorizado, que se permite únicamente el destino/puerto autorizado y que no se llega a destino no autorizado mediante redirect, cambio de DNS, IP literal, IPv4/IPv6, puerto distinto o revocación; validar aislamiento y límites. Si no se puede demostrar control de cada conexión, no ejecutar. Un simple check inicial de hostname, scope de ZAP o Docker no cumple la puerta. Ver [modelo de amenazas](THREAT_MODEL.md), [Docker networking](https://docs.docker.com/compose/how-tos/networking/) y [riesgos del spider](https://www.zaproxy.org/faq/is-there-any-danger-when-scanning-with-zap-against-a-live-website-e-g-create-delete-update-corrupt-data/).
