@@ -11,3 +11,13 @@ Los estados formales son `ESTABLECIDA` para alcance y restricciones conocidos, `
 Al actualizar, identifica la fuente y el estado de cada cambio, mantén coherentes documentos, JSON y diagramas, y no presentes propuestas como aprobaciones. Registra una decisión con identificador, descripción, estado y justificación histórica verificable en `context/decisions.json` y `docs/DECISIONS_AND_OPEN_QUESTIONS.md`; una aprobación requiere autorización humana. Si hay contradicciones, señálalas y consulta a una persona responsable antes de resolverlas por suposición. No alteres decisiones aprobadas sin autorización humana.
 
 Las contribuciones deben ser concretas, revisables y limitarse al alcance autorizado; no incluir secretos ni credenciales. Indica supuestos y pendientes, y revisa enlaces, JSON y coherencia antes de entregar.
+
+## Índice de ingeniería
+
+- [Auditoría documental](docs/DOCUMENTATION_AUDIT.md) y [trazabilidad de requisitos](docs/REQUIREMENTS_TRACEABILITY.md).
+- [Criterios de aceptación](docs/ACCEPTANCE_CRITERIA.md) y [revisión de preparación](docs/IMPLEMENTATION_READINESS_REVIEW.md).
+- [Investigación de integraciones](docs/EXTERNAL_INTEGRATIONS.md), [borrador de API](docs/API_CONTRACT_DRAFT.md) y [diccionario de datos propuesto](docs/DATA_DICTIONARY_DRAFT.md).
+- [Modelo de amenazas](docs/THREAT_MODEL.md) y [evaluación de tecnologías](docs/STACK_EVALUATION.md).
+- Diagramas propuestos: [registro de activos](diagrams/asset_registration_sequence.mmd), [evaluación CVE](diagrams/cve_assessment_sequence.mmd), [ZAP Baseline](diagrams/zap_baseline_sequence.mmd) y [límites de confianza](diagrams/trust_boundaries.mmd).
+
+Los borradores y criterios concretos son **PROPUESTA**; las decisiones y definiciones faltantes son **PENDIENTE**. Consultar los documentos originales y decisiones antes de implementar.

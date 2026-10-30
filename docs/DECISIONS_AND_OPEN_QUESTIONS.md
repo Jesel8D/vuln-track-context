@@ -25,3 +25,14 @@
 - **PENDIENTE:** cualquier incorporación de una funcionalidad excluida del MVP requiere aprobación explícita.
 
 Solo D-001 y D-002 tienen aprobación formal registrada; las propuestas y cambios a decisiones aprobadas requieren autorización humana antes de tratarse como decisiones aprobadas.
+
+## Preguntas adicionales de la auditoría
+
+- **PENDIENTE:** ¿La conservación del formulario debe sobrevivir al cierre de la aplicación y cómo se protegerá localmente?
+- **PENDIENTE:** ¿Cuál será la vigencia y el comportamiento de las claves de idempotencia, especialmente ante respuestas perdidas?
+- **PENDIENTE:** ¿Qué hacer cuando no existe un CPE adecuado o su versión no permite el filtro de NVD? ¿Cómo presentar resultados parciales o desactualizados?
+- **PENDIENTE:** ¿Qué política de sesiones, permisos por recurso y retención de registros se aprueba? ¿Cómo se gestionan los secretos operativos propios sin almacenar secretos de clientes?
+- **PENDIENTE:** ¿Quién autoriza, modifica y revoca destinos de prueba? ¿Qué mecanismos de salida por conexión, DNS y redirecciones se pueden probar antes de ejecutar ZAP?
+- **PENDIENTE:** ¿Qué estados y transiciones tendrán las ejecuciones y hallazgos, y cómo se conserva la evidencia histórica?
+- **PENDIENTE:** ¿Cómo se calcularán las métricas del dashboard y la deduplicación, y qué versiones y fuentes de CVSS se mostrarán?
+- **PENDIENTE:** ¿Qué plataformas, versiones, entornos, presupuesto y criterios cuantitativos de finalización tendrá el MVP?

@@ -1,0 +1,21 @@
+sequenceDiagram
+    autonumber
+    actor Analista
+    participant Web as Aplicación web
+    participant API as Backend / API
+    participant NVD as NVD REST API 2.0
+    Analista->>Web: Buscar fabricante, producto y versión
+    Web->>API: Buscar candidatos CPE
+    API->>NVD: Consultar diccionario CPE
+    NVD-->>API: Candidatos o error
+    API-->>Web: Candidatos con metadatos o error
+    Analista->>Web: Seleccionar manualmente CPE
+    alt CPE válido y seleccionado
+        Web->>API: Solicitar consulta CVE para activo y CPE
+        API->>NVD: Consultar CVE por CPE y páginas
+        NVD-->>API: Resultados o fallo
+        API-->>Web: CVE potenciales, fecha y cobertura
+        Web-->>Analista: Mostrar potencialmente aplicables
+    else Sin candidato adecuado o versión no admitida
+        Web-->>Analista: Informar limitación; no iniciar consulta
+    end

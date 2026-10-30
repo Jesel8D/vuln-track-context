@@ -1,0 +1,24 @@
+sequenceDiagram
+    autonumber
+    actor Operador
+    participant Movil as Aplicación móvil
+    participant API as Backend / API
+    participant DB as PostgreSQL (PROPUESTA)
+    participant Web as Aplicación web
+    Operador->>Movil: Completar formulario de activo
+    Movil->>API: POST activo con clave idempotente propuesta
+    API->>API: Validar y autorizar (PROPUESTA)
+    API->>DB: Persistir activo y clave de manera transaccional (PROPUESTA)
+    DB-->>API: Confirmar persistencia
+    alt Respuesta recibida
+        API-->>Movil: Confirmar registro
+    else Conectividad o respuesta perdidas
+        API--xMovil: Error o sin respuesta
+        Movil->>Movil: Conservar formulario y permitir reintento
+        Movil->>API: Reintentar con la misma clave (PROPUESTA)
+        API-->>Movil: Devolver resultado previo si ya se guardó (PROPUESTA)
+    end
+    Web->>API: Consultar activos autorizados
+    API->>DB: Leer activos
+    DB-->>API: Datos persistidos
+    API-->>Web: Lista de activos

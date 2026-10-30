@@ -1,0 +1,23 @@
+sequenceDiagram
+    autonumber
+    actor Analista
+    participant Web as Aplicación web
+    participant API as Backend / API
+    participant ZAP as Ejecución aislada ZAP Baseline (PROPUESTA)
+    participant App as Aplicación de prueba autorizada
+    Analista->>Web: Elegir destino autorizado por identificador
+    Web->>API: Solicitar análisis Baseline
+    API->>API: Validar permiso, lista, vigencia y aislamiento
+    alt Validación y control de salida demostrados
+        API-->>Web: Ejecución aceptada (PROPUESTA)
+        API->>ZAP: Ejecutar con configuración controlada
+        ZAP->>App: Solicitudes de spider dentro del alcance
+        App-->>ZAP: Respuestas HTTP
+        ZAP->>ZAP: Análisis pasivo y reporte
+        ZAP-->>API: Alertas y resultado de ejecución
+        Web->>API: Consultar estado y hallazgos
+        API-->>Web: Resultado autorizado o error
+    else Destino o control de salida no verificable
+        API-->>Web: Rechazar o bloquear ejecución
+    end
+    Note over ZAP,App: Redirecciones y conexiones fuera de alcance bloqueadas por controles propuestos

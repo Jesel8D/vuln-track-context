@@ -1,0 +1,23 @@
+flowchart LR
+    subgraph clientes["Frontera: clientes no confiables"]
+        mobile["Móvil"]
+        web["Web"]
+    end
+    subgraph servidor["Frontera: backend y persistencia"]
+        api["Backend / API: validar y autorizar (PROPUESTA)"]
+        db["PostgreSQL (PROPUESTA)"]
+        api --> db
+    end
+    subgraph aislado["Frontera: ejecución y salida controlada (PROPUESTA)"]
+        zap["ZAP Baseline"]
+        egress["Control de salida por conexión"]
+        zap --> egress
+    end
+    nvd["NVD REST API 2.0"]
+    target["Aplicación de prueba autorizada"]
+    mobile -->|"formulario / identidad"| api
+    web -->|"consultas / selección / solicitud"| api
+    api -->|"CPE / CVE"| nvd
+    api -->|"destino de lista y configuración fija"| zap
+    egress -->|"solo destino autorizado"| target
+    zap -->|"reporte no confiable"| api

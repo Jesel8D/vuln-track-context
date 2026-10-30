@@ -1,0 +1,23 @@
+# Evaluación del stack
+
+**PROPUESTA:** recomendación para un equipo de dos personas y cuatro semanas, condicionada por experiencia real, entorno, aprobación y una prueba temprana. No hay decisión tecnológica nueva **APROBADA**. Valoraciones de complejidad y compatibilidad son estimaciones; precios y límites no verificados no se inventan.
+
+| Candidato | Ventajas para MVP | Desventajas y riesgos | Integración, pruebas y despliegue |
+|---|---|---|---|
+| React + Vite + TypeScript | Componentes y tipos pueden acelerar formularios y panel; Vite aporta entorno de desarrollo simple. | Curva de TS, accesibilidad, manejo de estados y errores; dependencias y actualización. | Consume API HTTP; probar vistas, autorización y errores; publicar artefactos web requiere definir hosting. [React](https://react.dev/), [Vite](https://vite.dev/guide/), [TypeScript](https://www.typescriptlang.org/docs/). |
+| React Native + Expo + TypeScript | Comparte lenguaje y patrones con web; Expo simplifica preparación móvil. | No comparte automáticamente UI ni almacenamiento; instalación y distribución en dispositivos consumen tiempo; persistencia de formulario y permisos se deben probar. | Probar fallo de conectividad en dispositivo real; compatibilidad de versiones y forma de distribución requieren decisión. [Expo](https://docs.expo.dev/), [React Native](https://reactnative.dev/docs/getting-started). |
+| Python + FastAPI | Tipos y validación integrables con API y documentación; ecosistema Python. | Diseñar autorización y errores requiere trabajo; tareas largas de ZAP no deben bloquear servidor. | Probar contrato, límites, concurrencia y desconexión; definir ejecución y despliegue. [FastAPI](https://fastapi.tiangolo.com/). |
+| PostgreSQL | Transacciones y restricciones favorecen consistencia de activos e idempotencia. | Instalación, backups, credenciales y operación requieren tiempo; modelo pendiente. | Acceso desde backend; pruebas de transacción y restauración; hosting y costos no conocidos. [PostgreSQL](https://www.postgresql.org/docs/). |
+| SQLAlchemy | Facilita mapeo y consultas parametrizadas; compatible con Python y PostgreSQL. | Aprendizaje de sesiones/transacciones; ORM no corrige controles de acceso. | Probar límites de transacción y concurrencia; modelos en backend por D-002. [SQLAlchemy](https://docs.sqlalchemy.org/). |
+| Alembic | Mantiene evolución de esquema revisable. | Autogeneración necesita revisión y coordinación de cambios; retrocesos no siempre seguros. | Migraciones en backend por D-002 si se adopta; probar aplicación en base de prueba. [Alembic](https://alembic.sqlalchemy.org/). |
+| Docker | Aislamiento reproducible y distribución de herramientas; imagen Baseline disponible. | Un contenedor por sí solo no garantiza aislamiento de red; configuración y permisos agregan trabajo. | Fijar imagen y probar denegación de salida; no montar socket; despliegue y monitorización pendientes. [Docker](https://docs.docker.com/). |
+
+## Compatibilidad y costos
+
+**PROPUESTA:** web y móvil comparten TypeScript, pero no es necesario compartir código para obtener beneficio; ambos consumen un contrato coherente. FastAPI/SQLAlchemy/Alembic son compatibles conceptualmente con PostgreSQL; la combinación y versiones concretas deben probarse juntas. Docker puede apoyar el laboratorio de ZAP y base de datos, sin que ello apruebe su adopción ni demuestre aislamiento seguro.
+
+Según [licencia oficial de Docker Desktop](https://docs.docker.com/subscription-billing/desktop-license/), educación figura entre usos gratuitos sujetos a sus términos; no confundir Desktop con Docker Engine ni inferir que todos los servicios asociados sean gratuitos. Costos de hosting, dispositivos, distribución de app, ancho de banda, operación y asistencia no se han cotizado; requieren entorno y proveedor definidos. Las tarifas y requisitos de NVD deben verificarse con su documentación oficial, cuya página no fue legible en esta consulta.
+
+## Recomendación condicionada
+
+**PROPUESTA:** adoptar la combinación candidata si el equipo demuestra familiaridad suficiente, compatibilidad y un flujo mínimo en una prueba de laboratorio tras aprobación. La prioridad es móvil → API → persistencia → web; reservar tiempo temprano para comprobar que ZAP puede restringirse de verdad. Alternativa si el equipo desconoce una tecnología: reducir alcance operativo o elegir herramienta conocida, sujeto a autorización, sin cambiar requisitos. No recomendar un despliegue real ni fijar versiones sin validación. **PENDIENTE:** experiencia de los integrantes, plataformas móviles, CI, hosting, presupuesto, versiones y responsable de operación.

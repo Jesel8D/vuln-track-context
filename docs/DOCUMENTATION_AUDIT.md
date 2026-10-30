@@ -1,0 +1,26 @@
+# Auditoría documental
+
+Revisión del 30-10-2026. **ESTABLECIDA:** se examinaron los 14 archivos originales completos: README, AGENTS, los dos JSON, los ocho documentos de `docs/` y ambos diagramas. Alcance: coherencia, suficiencia para implementación, seguridad y trazabilidad; no es auditoría de código ni prueba de servicios. Severidad y consecuencias son valoración **PROPUESTA**; las preguntas son **PENDIENTE**.
+
+| ID | Gravedad | Evidencia | Consecuencia | Recomendación y decisión pendiente |
+|---|---|---|---|---|
+| A-01 | Crítica | SECURITY_BOUNDARIES: lista permitida; mecanismo de aislamiento y verificación pendiente. | Una URL permitida puede redirigir o resolver a otra dirección; ZAP podría salir del alcance. | Bloquear la ejecución hasta probar control de destino en cada conexión y aislamiento; aprobar quién autoriza, revoca y cómo se restringe salida. Ver THREAT_MODEL. |
+| A-02 | Alta | REQUIREMENTS conserva datos ante fallo; API_CONTRACT carece de idempotencia. | Si el servidor guardó y la respuesta se perdió, reintentar puede duplicar activos. | Proponer clave idempotente transaccional y política de expiración; aprobar semántica. |
+| A-03 | Alta | API_CONTRACT: autenticación, roles y validaciones pendientes; endpoints PATCH/DELETE propuestos. | Implementación o acceso sin reglas, además de confundir administración con CRUD aprobado. | Aprobar alcance y control por recurso; bloquear actualización y eliminación hasta definirlas. |
+| A-04 | Alta | DATA_MODEL: atributos y relaciones pendientes; API carece de esquemas. | Equipo no puede implementar persistencia ni vincular análisis y hallazgos sin inventar. | Revisar DATA_DICTIONARY_DRAFT y API_CONTRACT_DRAFT conjuntamente; decidir historial, cardinalidad y retención. |
+| A-05 | Alta | REQUIREMENTS pide selección manual y CVE; no define versión incompleta ni resultados NVD parciales. | NVD `cpeName` exige componentes concretos y ausencia de datos puede parecer ausencia de vulnerabilidades. | Validar elegibilidad, mostrar cobertura y fecha; acordar comportamiento sin CPE o con fallo/paginación parcial. |
+| A-06 | Alta | SECURITY_BOUNDARIES prohíbe secretos de clientes; autenticación y gestión de credenciales operativas pendientes. | Filtración de sesiones o confusión entre credenciales de usuarios y secretos de clientes. | Distinguir credenciales del sistema, secretos operativos y datos de clientes; aprobar manejo y redacción de registros. |
+| A-07 | Media | ARCHITECTURE usa flecha conceptual PostgreSQL → web y explica acceso por backend. | El diagrama aislado puede interpretarse como conexión directa. | Mantener aclaración explícita en diagrama y secuencia; confirmar comunicación real al aprobar arquitectura. |
+| A-08 | Media | PROJECT_CONTEXT/REQUIREMENTS contemplan PostgreSQL; ARCHITECTURE lo clasifica PROPUESTA; D-002 define responsabilidades condicionales. | Estado técnico puede confundirse con decisión aprobada. | Conservar distinción: flujo de referencia establecido; adopción de tecnología propuesta. |
+| A-09 | Media | REQUIREMENTS menciona hallazgos y dashboard sin estados, definición de métricas o filtros. | Cifras engañosas o estados no interoperables. | Definir fuentes, deduplicación, actualización y permisos; propuestas en contrato y modelo. |
+| A-10 | Media | REQUIREMENTS no especifica conservación tras cerrar app ni límites de formulario; solo fallo de envío. | Se asume persistencia local o sincronización offline no autorizada. | Diferenciar conservación durante sesión y persistencia local opcional; aprobar duración y protección. |
+| A-11 | Media | IMPLEMENTATION_PLAN prevé ZAP y dashboard en semana 4 sin márgenes; equipo de dos. | Controles de red y pruebas podrían retrasar MVP. | Adelantar prueba aislada de viabilidad de ZAP y reservar contingencia sin implementar antes de aprobación. |
+| A-12 | Media | README y AGENTS no dan reglas de precedencia automáticas; requieren resolver contradicciones con persona. | Los borradores podrían tratarse como verdad superior a requisitos. | Usar decisiones aprobadas y alcance establecido como referencia, registrar contradicciones y pedir resolución; no imponer precedencia unilateral. |
+
+## Resultado
+
+**PENDIENTE:** el paquete original describe alcance y límites, pero no habilita implementación segura y completa sin aprobar contrato mínimo, modelo, autenticación y arquitectura de aislamiento. No se detectó una contradicción explícita entre requisitos y arquitectura; A-07 y A-08 son riesgos de interpretación. Los nuevos documentos son borradores y no constituyen aceptación humana. La revisión de completitud figura en [IMPLEMENTATION_READINESS_REVIEW.md](IMPLEMENTATION_READINESS_REVIEW.md).
+
+## Segunda revisión crítica
+
+**PROPUESTA:** se contrastaron los borradores de API, datos, criterios, seguridad y diagramas. La revisión encontró que la idempotencia requiere reserva transaccional y manejo de solicitudes concurrentes, que `complete` solo describe páginas recuperadas y que la validación inicial de una URL no protege conexiones posteriores; los borradores incorporan estas distinciones. **PENDIENTE:** verificar documentación oficial NVD CVE 2.0, concretar permisos y ejecutar pruebas de aislamiento. Los diagramas no se renderizaron por falta de herramienta instalada; su sintaxis Mermaid queda pendiente de validación con un renderizador.
