@@ -38,3 +38,7 @@ La planificación es **PROPUESTA**; los requisitos establecidos y las decisiones
 - [Flujo propuesto de activos](diagrams/proposed_asset_flow.mmd).
 
 El [plan maestro](docs/IMPLEMENTATION_MASTER_PLAN.md) y el paquete de decisiones se integraron en `dev/jesel` el 30-10-2026; los commits originales se conservan en el historial. Todos los nuevos diseños siguen **PROPUESTA** y las decisiones correspondientes **PENDIENTE**.
+
+## Avance de implementación
+
+[PostgreSQL Database V1](docs/DATABASE_V1_PROGRESS.md) registra el esquema provisional materializado, sus archivos y pruebas reales. Las auditorías anteriores describen el estado previo a esta construcción; no deben interpretarse como inventario actual de `database`.

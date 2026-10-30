@@ -40,3 +40,7 @@ Solo D-001 y D-002 tienen aprobación formal registrada; las propuestas y cambio
 ## Paquete de decisiones preparado
 
 **PENDIENTE:** revisar individualmente las alternativas y recomendaciones de [DECISION_APPROVAL_CHECKLIST.md](DECISION_APPROVAL_CHECKLIST.md), incluida la ubicación de la aplicación móvil, la matriz de versiones compatibles, el modelo de identidad, la política de claves idempotentes. La rama del plan maestro y la del paquete se integraron en `dev/jesel` el 30-10-2026; esa integración documental no aprueba sus propuestas técnicas. Las recomendaciones de ese paquete no alteran D-001 ni D-002 ni constituyen autorización humana.
+
+## Database V1 provisional
+
+**PROPUESTA:** el [seguimiento Database V1](DATABASE_V1_PROGRESS.md) registra las elecciones mínimas materializadas y probadas bajo autorización de la misión actual. **PENDIENTE:** aprobar el contrato/esquema global, normalización de usernames, login operativo y permisos por recurso, política de retención y claves idempotentes; planificar evolución segura y conciliación de baseline con migraciones backend si se adopta ese stack. ZAP continúa pendiente y se rechaza en el esquema V1. No se incorporan nuevas decisiones formalmente aprobadas.
