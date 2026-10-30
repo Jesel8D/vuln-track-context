@@ -1,0 +1,17 @@
+flowchart LR
+    mobile["Aplicación móvil<br/>React Native + Expo + TypeScript: PROPUESTA"]
+    backend["Backend / API<br/>Python + FastAPI: PROPUESTA"]
+    db["PostgreSQL<br/>Tecnología: PROPUESTA"]
+    web["Aplicación web<br/>React + Vite + TypeScript: PROPUESTA"]
+    nvd["NVD REST API 2.0"]
+    zap["OWASP ZAP Baseline<br/>Docker para aislamiento: PROPUESTA"]
+    mobile --> backend --> db -->|"flujo conceptual de datos vía backend"| web
+    web -. "consultas vía API" .-> backend
+    backend --> nvd
+    backend --> zap
+    classDef client fill:#e1f0ff,stroke:#175a91,color:#102a43
+    classDef server fill:#e2f5e9,stroke:#227744,color:#123c24
+    classDef external fill:#fff0d9,stroke:#996000,color:#4a3100
+    class mobile,web client
+    class backend,db server
+    class nvd,zap external

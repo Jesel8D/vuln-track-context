@@ -1,0 +1,12 @@
+{
+  "nombre_del_proyecto": "VulnTrack",
+  "descripcion": "Sistema de gestión y seguimiento de vulnerabilidades",
+  "componentes": ["backend", "frontend", "database", "context-general-ia"],
+  "repositorios_remotos": {
+    "backend": "https://github.com/Jesel8D/vuln-track-backend",
+    "frontend": "https://github.com/Jesel8D/vuln-track-frontend",
+    "database": "https://github.com/Jesel8D/vuln-track-database",
+    "context": "https://github.com/Jesel8D/vuln-track-context"
+  },
+  "referencia_a_documentos_centrales": ["docs/PROJECT_CONTEXT.md", "docs/REQUIREMENTS.md"]
+}

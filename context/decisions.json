@@ -1,0 +1,16 @@
+{
+  "decisiones": [
+    {
+      "id": "D-001",
+      "estado": "APROBADA",
+      "descripcion": "Utilizar vuln-track-context como cuarto repositorio independiente para la documentación general, decisiones, requisitos, arquitectura e instrucciones compartidas.",
+      "justificacion_historica": "No se dispone de una justificación original registrada."
+    },
+    {
+      "id": "D-002",
+      "estado": "APROBADA",
+      "descripcion": "El repositorio database es responsable de la configuración de PostgreSQL, scripts de inicialización, datos de demostración o seed y documentación propia; los modelos SQLAlchemy y las migraciones Alembic pertenecen al repositorio backend.",
+      "justificacion_historica": "No se dispone de una justificación original registrada."
+    }
+  ]
+}
