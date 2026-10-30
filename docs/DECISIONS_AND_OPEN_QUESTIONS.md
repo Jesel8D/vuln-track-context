@@ -36,3 +36,7 @@ Solo D-001 y D-002 tienen aprobación formal registrada; las propuestas y cambio
 - **PENDIENTE:** ¿Qué estados y transiciones tendrán las ejecuciones y hallazgos, y cómo se conserva la evidencia histórica?
 - **PENDIENTE:** ¿Cómo se calcularán las métricas del dashboard y la deduplicación, y qué versiones y fuentes de CVSS se mostrarán?
 - **PENDIENTE:** ¿Qué plataformas, versiones, entornos, presupuesto y criterios cuantitativos de finalización tendrá el MVP?
+
+## Paquete de decisiones preparado
+
+**PENDIENTE:** revisar individualmente las alternativas y recomendaciones de [DECISION_APPROVAL_CHECKLIST.md](DECISION_APPROVAL_CHECKLIST.md), incluida la ubicación de la aplicación móvil, la matriz de versiones compatibles, el modelo de identidad, la política de claves idempotentes. La rama del plan maestro y la del paquete se integraron en `dev/jesel` el 30-10-2026; esa integración documental no aprueba sus propuestas técnicas. Las recomendaciones de ese paquete no alteran D-001 ni D-002 ni constituyen autorización humana.

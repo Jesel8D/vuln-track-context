@@ -29,3 +29,12 @@ Los borradores y criterios concretos son **PROPUESTA**; las decisiones y definic
 - [Diagrama de dependencias y puntos de integración](diagrams/implementation_roadmap.mmd).
 
 La planificación es **PROPUESTA**; los requisitos establecidos y las decisiones **PENDIENTE** se conservan en los documentos de contexto.
+
+## Paquete de decisiones y diagnóstico
+
+- [Diagnóstico de repositorios](docs/REPOSITORY_ACCESS_DIAGNOSTICS.md) y [comparativa técnica](docs/TECHNICAL_DECISION_PACKAGE.md).
+- [Ubicación móvil](docs/MOBILE_REPOSITORY_STRATEGY.md), [contrato de activos](docs/ASSET_CONTRACT_PROPOSAL.md) y [modelo propuesto](docs/DATA_MODEL_PROPOSAL.md).
+- [Identidad y permisos](docs/IDENTITY_AND_ACCESS_PROPOSAL.md), [seguridad de integraciones](docs/INTEGRATION_SECURITY_REVIEW.md) y [matriz de decisiones](docs/DECISION_APPROVAL_CHECKLIST.md).
+- [Flujo propuesto de activos](diagrams/proposed_asset_flow.mmd).
+
+El [plan maestro](docs/IMPLEMENTATION_MASTER_PLAN.md) y el paquete de decisiones se integraron en `dev/jesel` el 30-10-2026; los commits originales se conservan en el historial. Todos los nuevos diseños siguen **PROPUESTA** y las decisiones correspondientes **PENDIENTE**.

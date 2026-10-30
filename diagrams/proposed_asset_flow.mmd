@@ -1,0 +1,27 @@
+sequenceDiagram
+    autonumber
+    actor Tecnico
+    participant Movil as Cliente móvil (PROPUESTA)
+    participant API as Backend API (PROPUESTA)
+    participant DB as PostgreSQL (PROPUESTA)
+    participant Web as Cliente web (PROPUESTA)
+    Tecnico->>Movil: Introducir datos de activo
+    Movil->>Movil: Generar clave de intento (PROPUESTA)
+    Movil->>API: POST de activo y clave idempotente
+    API->>API: Autorizar y validar (PROPUESTA)
+    API->>DB: Reservar clave y guardar activo en transacción
+    DB-->>API: Confirmar commit
+    alt Respuesta recibida
+        API-->>Movil: 201 y activo creado
+    else Respuesta perdida después del commit
+        API--xMovil: Resultado incierto
+        Movil->>Movil: Conservar formulario y clave
+        Movil->>API: Reintentar igual dentro de ventana propuesta
+        API->>DB: Comprobar clave y huella
+        DB-->>API: Resultado previo o nueva transacción
+        API-->>Movil: Resultado confirmado o conflicto
+    end
+    Web->>API: Consultar activos autorizados
+    API->>DB: Leer registros visibles
+    DB-->>API: Datos de activos
+    API-->>Web: Página de activos
