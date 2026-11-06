@@ -24,7 +24,7 @@ Los borradores y criterios concretos son **PROPUESTA**; las decisiones y definic
 
 ## Auditoría y plan de implementación
 
-- [Estado real de los repositorios](docs/REPOSITORY_READINESS.md) y [plan maestro](docs/IMPLEMENTATION_MASTER_PLAN.md).
+- [Estado real de los repositorios](docs/REPOSITORY_READINESS.md), [seguimiento Database V1 y propuesta V2](docs/DATABASE_V1_PROGRESS.md) y [plan maestro](docs/IMPLEMENTATION_MASTER_PLAN.md).
 - [Distribución propuesta entre desarrolladores](docs/DEVELOPER_WORK_DISTRIBUTION.md), [estrategia de pruebas](docs/TEST_STRATEGY.md) y [registro de riesgos](docs/TECHNICAL_RISK_REGISTER.md).
 - [Diagrama de dependencias y puntos de integración](diagrams/implementation_roadmap.mmd).
 
@@ -41,4 +41,4 @@ El [plan maestro](docs/IMPLEMENTATION_MASTER_PLAN.md) y el paquete de decisiones
 
 ## Avance de implementación
 
-[PostgreSQL Database V1](docs/DATABASE_V1_PROGRESS.md) registra el esquema provisional materializado, sus archivos y pruebas reales. Las auditorías anteriores describen el estado previo a esta construcción; no deben interpretarse como inventario actual de `database`.
+[Seguimiento de Database V1 y propuesta V2](docs/DATABASE_V1_PROGRESS.md) registra el esquema provisional, las pruebas reales de V1 y el estado aún no verificado ni aprobado de V2. Las auditorías anteriores describen el estado previo a estas construcciones; no deben interpretarse como inventario actual de `database`.

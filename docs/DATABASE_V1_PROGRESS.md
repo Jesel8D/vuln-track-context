@@ -36,3 +36,20 @@ Sin prueba de carga, recuperación de backup, portabilidad de arquitecturas ni r
 ZAP queda **PENDIENTE**, rechazado por el esquema V1 hasta diseñar catálogo autorizado y controles DNS/redirecciones/egress. No hay integración NVD real, API, autenticación funcional, web ni móvil. No se modificaron backend/frontend ni se generaron modelos ORM o migraciones Alembic. El diagrama original `diagrams/data_model.mmd` sigue intacto.
 
 Próximo paso **PROPUESTA:** revisar/aprobar el contrato mínimo, identidad y esquema provisional; seleccionar stack backend; crear login operativo con secretos externos y conectar creación/consulta de activos en transacción. Si se adopta SQLAlchemy/Alembic, el baseline deberá conciliarse con migraciones dentro de backend respetando D-002, sin reaplicar ciegamente los scripts sobre datos existentes.
+
+## Revisión posterior: propuesta Database V2
+
+Fecha: 05-11-2026. Tras publicar Database V1, la rama [`rudi`](https://github.com/Jesel8D/vuln-track-database/tree/rudi) agregó una **propuesta aditiva** para aplicaciones web y workspaces. Commits: `66b68aa` (modelo V2) y `54b7644` (RLS y contexto HMAC). El backend documenta la integración HMAC en su rama [`rudi`](https://github.com/Jesel8D/vuln-track-backend/tree/rudi), commit `1a7ec7b`.
+
+La propuesta agrega `workspaces`, `workspace_members`, `applications`, `application_targets`, `technologies`, ejecuciones y hallazgos para aplicaciones, recomendaciones, metadatos de imports, auditoría append-only y RLS con contexto firmado de corta duración. Conserva las tablas V1 y no transforma ni reasigna activos históricos. El contexto describe cómo la base valida HMAC, pero el backend aún no tiene una implementación de autenticación, firma ni establecimiento del contexto.
+
+**No verificado:** la migración `sql/004_v2_application_model.sql` y `tests/002_v2_security.sql` se añadieron al repositorio database, pero no se ejecutaron contra PostgreSQL. Docker no estaba disponible en la sesión. No afirmar que la migración o RLS pasaron sus pruebas hasta ejecutarlas.
+
+### Contradicciones y aprobaciones pendientes
+
+- El alcance **ESTABLECIDA** de [requisitos](REQUIREMENTS.md) y el modelo V1 describen activos con tipo de dispositivo, fabricante, modelo, versión y sitio. El objetivo de V2 describe aplicaciones web, URL, tecnologías y versiones. La migración conserva ambos modelos sin resolver si VulnTrack gestionará dispositivos, aplicaciones web o ambos; requiere decisión humana antes de hacer V2 el modelo activo.
+- [Identidad y permisos](IDENTITY_AND_ACCESS_PROPOSAL.md) dice que no se inventa una estructura multitenant y que permisos/roles siguen **PENDIENTE**. El workspace de V2 es una alternativa técnica **PROPUESTA**, no aprobación de multitenencia.
+- D-002 asigna modelos SQLAlchemy y migraciones Alembic a backend si se adopta ese stack. V2 incorpora un script SQL aditivo en database. Confirmar cómo encaja con D-002 y con la estrategia de migraciones antes de operar sobre datos existentes.
+- La suite nueva incluye pruebas negativas RLS/HMAC, pero requiere PostgreSQL real, revisión del protocolo de firma entre API y base, y tratamiento seguro de la clave fuera de Git. La firma no implementa por sí sola autenticación de usuarios.
+
+No se cambian requisitos, decisiones JSON ni decisiones aprobadas en esta actualización; se registra estado real de ramas y pendientes para revisión.

@@ -44,3 +44,11 @@ Solo D-001 y D-002 tienen aprobación formal registrada; las propuestas y cambio
 ## Database V1 provisional
 
 **PROPUESTA:** el [seguimiento Database V1](DATABASE_V1_PROGRESS.md) registra las elecciones mínimas materializadas y probadas bajo autorización de la misión actual. **PENDIENTE:** aprobar el contrato/esquema global, normalización de usernames, login operativo y permisos por recurso, política de retención y claves idempotentes; planificar evolución segura y conciliación de baseline con migraciones backend si se adopta ese stack. ZAP continúa pendiente y se rechaza en el esquema V1. No se incorporan nuevas decisiones formalmente aprobadas.
+
+## Revisión de la propuesta Database V2
+
+- **PENDIENTE:** resolver si el dominio de VulnTrack es el inventario de dispositivos ya establecido, la gestión de aplicaciones web de la conversación de diseño, o ambos. Database V2 propone aplicaciones web; no modifica ni reemplaza RF-02 por sí sola.
+- **PENDIENTE:** decidir si se aprueba el modelo de workspaces y membresías multiusuario propuesto en Database V2. La propuesta no equivale a aprobación del modelo multitenant ni de roles.
+- **PENDIENTE:** confirmar cómo se aplica D-002 a `sql/004_v2_application_model.sql` y a futuras migraciones: SQL de evolución en database frente a modelos/migraciones Alembic en backend si se adopta SQLAlchemy/Alembic.
+- **PENDIENTE:** revisar el contexto HMAC, la custodia/rotación de la clave, el contrato de transacción y la autenticación/autorización que el backend todavía debe implementar.
+- **PENDIENTE:** ejecutar y revisar la migración V2 y sus pruebas contra PostgreSQL antes de presentar sus controles como verificados.
