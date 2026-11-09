@@ -1,6 +1,6 @@
 # Inventario de respaldo y recuperación
 
-Corte inicial 2026-11-08, previo al push de esta rama documental. Los hashes ya sincronizados se comprobaron con `git ls-remote --heads` por SSH; este archivo se actualizará con la verificación del paquete documental antes del cierre. No equivale a copia íntegra del equipo.
+Corte de verificación del paquete publicado: 2026-11-08, commit `411a8f253e4a6d1db6f18f3c4ea7a5548c42d996`. Hashes comprobados mediante ls-remote y clonaciones bare independientes por SSH desde GitHub. No equivale a copia íntegra del equipo. Este inventario se actualiza en un commit posterior: no puede contener su propio hash. El hash final de esa actualización se comprueba tras su push y figura en el reporte final; puede resolverse siempre con `git ls-remote origin refs/heads/docs/mvp-context-consolidation`. La tabla siguiente es el corte verificable del paquete, no una afirmación de que su commit de inventario sea el mismo.
 
 | Repositorio | Rama | Commit local o referencia local inspeccionada | Commit remoto observado | Estado | Contenido principal |
 |---|---|---|---|---|---|
@@ -14,7 +14,7 @@ Corte inicial 2026-11-08, previo al push de esta rama documental. Los hashes ya 
 | Context | rudi | 6c8baf74a3d7bcd7a0a9ebcca2dda0d797cbfeeb | 6c8baf74a3d7bcd7a0a9ebcca2dda0d797cbfeeb | Ya sincronizado | documentación V2 |
 | Context | codex/decision-readiness | f7189656c477c8d33728b8ed8c7587b6b0ec8696 | f7189656c477c8d33728b8ed8c7587b6b0ec8696 | Ya sincronizado | paquete antecedente de decisiones |
 | Context | codex/implementation-master-plan | 9a09af4e30ad09036a32c9c283ad48172dfdadad | 9a09af4e30ad09036a32c9c283ad48172dfdadad | Ya sincronizado | plan antecedente |
-| Context | docs/mvp-context-consolidation | base d481061e5ecb53b9a033086481add37f04d8c549; commit nuevo pendiente | no existía al iniciar | Pendiente | aprobación individual, contrato,31 informes, recuperación y parche |
+| Context | docs/mvp-context-consolidation | 411a8f253e4a6d1db6f18f3c4ea7a5548c42d996 | 411a8f253e4a6d1db6f18f3c4ea7a5548c42d996 | Publicado y verificado (corte del paquete, ver nota de autorreferencia) | aprobación individual, contrato,31 informes, recuperación y parche |
 | Frontend | main sin commits | no hay HEAD | sin ramas remotas | No aplicable | repositorio vacío, sin aplicación inventada |
 
 Remotos de recuperación SSH: `git@github.com:Jesel8D/vuln-track-backend.git`, `git@github.com:Jesel8D/vuln-track-database.git`, `git@github.com:Jesel8D/vuln-track-context.git`, `git@github.com:Jesel8D/vuln-track-frontend.git`. Origin de Database/Frontend permanece configurado HTTPS en el equipo anterior; SSH apunta al mismo repositorio verificado, no se modificaron URLs ni credenciales globales. Backend y Context ya usaban SSH.
@@ -51,3 +51,13 @@ No se encontraron archivos no rastreados adicionales en los cuatro repositorios 
 ## Seguridad y validación
 
 Se revisan archivos nuevos y rama audit antes de push: ausencia de .env privados, claves/tokens detectables, binarios grandes y contenido ajeno; ejemplos públicos de prueba y nombres CPE/UUID no son credenciales reales. Se comprueban `git diff --check`, JSON, enlaces y D-001/D-002 intactas. Ningún escaneo automatizado por sí solo garantiza ausencia universal de secretos; esta publicación se limita a documentación y tests inspeccionados. Ninguna migración o suite operativa se ejecuta durante sincronización.
+
+## Evidencia de recuperación y revisión final
+
+Se clonaron por SSH los repositorios Context, Backend y Database en directorios bare temporales independientes de los repositorios locales, recuperando las ramas de la tabla y comprobando sus hashes. Desde la copia remota de Context se comprobaron11 Markdown NVD,8 de auditoría y12 de consolidación, y se compararon byte a byte con el árbol local el contrato, aprobación, setup, handoff, inventario del corte y parche. Frontend se consultó con ls-remote: sin ramas, no hay contenido que respaldar.
+
+El parche del diagrama se aplicó únicamente a una copia temporal del archivo base b493fd1 y reconstruyó exactamente el archivo local modificado (mismo hash), sin modificar Database. Los árboles de trabajo originales y sus cambios fueron comparados por hashes/estado inicial; la rama de contexto nueva está en worktree separado. No hubo merge, force, rebase, borrado de ramas ni escritura a main.
+
+Worktrees conservados: `/home/mz/Desktop/VulnTrack/database` en V1 y `/home/mz/Desktop/vulntrack-database-v2-audit` en audit; Context original `/home/mz/Desktop/VulnTrack/context-general-ia` en dev/jesel y nuevo `/home/mz/Desktop/vulntrack-context-mvp-sync` en docs/mvp-context-consolidation. Estas rutas son procedencia del equipo anterior; en nueva PC se recuperan mediante clone/worktree de SETUP_NEW_PC, no copiando .git ni enlazando esos directorios. Los temporales bare de verificación no se publican ni se necesitan para continuar.
+
+Resultado de seguridad: no se detectaron .env privados, patrones de claves privadas, tokens GitHub/AWS/JWT literales ni archivos de más de1MB en el paquete; revisión manual de contenido y diff preparado realizada. Rama audit contiene tests sintéticos y guía, no credenciales reales; su commit previo se publica sin reescribirlo. Los ejemplos públicos de contraseñas de desarrollo del baseline no deben utilizarse como credenciales reales. La sincronización no ejecutó pruebas de aplicación, migraciones ni llamadas NVD.
