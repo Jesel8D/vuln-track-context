@@ -1,0 +1,12 @@
+diff --git a/diagrams/database_v1.mmd b/diagrams/database_v1.mmd
+index 1994710..c090267 100644
+--- a/diagrams/database_v1.mmd
++++ b/diagrams/database_v1.mmd
+@@ -6,7 +6,6 @@ erDiagram
+     assets ||--o{ asset_registration_requests : records
+     users {
+         uuid id PK
+-        text username UK
+         text password_hash "nullable"
+         boolean active
+         timestamptz created_at
