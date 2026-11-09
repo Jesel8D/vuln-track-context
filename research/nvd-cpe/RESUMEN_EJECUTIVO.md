@@ -1,0 +1,11 @@
+# Resumen ejecutivo
+
+**Sí, es viable un MVP de consulta asistida sin escáneres**, siempre que se entienda como inventario manual y resultados potenciales, no como demostración de que un equipo esté libre de vulnerabilidades. NVD respondió a doce búsquedas de productos y tres consultas CVE concretas. Se encontraron entradas CPE en las 12 búsquedas; las 12 son ambiguas bajo el criterio de más de un candidato, y no se inspeccionó ningún dispositivo. [Matriz](MATRIZ_PRODUCTOS_NVD.md) y [evidencia](FUENTES_Y_EVIDENCIAS.md).
+
+**VERIFICADO EN CÓDIGO:** el formulario actual pide tipo, fabricante, modelo, versión y sitio; versión desconocida no es aceptada. La identificación CPE, la búsqueda NVD y sus endpoints aún no existen en Backend V1.3. Database V1 permite guardar el CPE en cada ejecución y CVE potenciales, no la confirmación histórica previa. Database V2 plantea tecnologías para aplicaciones y workspaces, no integración directa con inventario físico; su validación de seguridad sigue incompleta.
+
+**PROPUESTA, no aprobada:** routers, switches y servidores; capturar inventario manual y una identificación principal por activo con historial, permitir versión desconocida tras evolución coordinada, mostrar candidatos NVD y confirmación humana. Consultar NVD únicamente desde backend con host fijado, cuota, paginación, tolerancia a errores y cobertura explícita. Reutilizar `analysis_runs` y `findings` con las ampliaciones aprobadas. Un CPE principal limita la cobertura a un componente y debe mostrarse claramente. Diferir componentes múltiples, workspaces y ZAP.
+
+Las configuraciones CVE pueden requerir condiciones de hardware y firmware, rangos y AND/OR; no asociar el primer resultado automáticamente ni presentar un CVE como explotación confirmada. Datos ausentes, páginas no leídas o enriquecimiento NVD incompleto producen estado no determinado, no resultado negativo.
+
+Opciones: A, un CPE principal, menor esfuerzo pero cobertura limitada: **recomendada**; B, componentes múltiples, mayor fidelidad y esfuerzo; C, solo aplicaciones web, desaprovecha alcance de inventario y no se recomienda para este MVP. Antes de implementar decidir propiedad, versión opcional, historial CPE, semántica de resultados y distribución de trabajo. El plan de cuatro semanas es estimación y no compromiso.
