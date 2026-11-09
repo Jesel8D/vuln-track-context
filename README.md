@@ -1,5 +1,16 @@
 # VulnTrack: contexto central
 
+## Continuación y estado actual — 2026-11-08
+
+**Contrato del MVP aprobado por Jesel, pendiente de ratificación por Rudi.** Aprobación individual de alcance, detalle técnico PROPUESTA y estado conjunto PENDIENTE; D-001/D-002 se conservan.
+
+1. Leer [PROJECT_MASTER_CONTEXT](docs/PROJECT_MASTER_CONTEXT.md), [PROJECT_HANDOFF](docs/PROJECT_HANDOFF.md) y [registro de aprobación](docs/MVP_APPROVAL_RECORD.md).
+2. Revisar [contrato maestro](docs/VULNTRACK_MVP_CONTRACT.md) y [decisiones para aprobación](research/mvp-consolidation/DECISIONES_PARA_APROBACION.md).
+3. Recuperar desde otra computadora con [SETUP_NEW_PC](docs/SETUP_NEW_PC.md) y comprobar [inventario remoto](docs/REMOTE_BACKUP_INVENTORY.md).
+4. Investigación/auditorías se conservan en [research](research/SOURCE_IMPORT_MANIFEST.md); [parche local pendiente](research/local-preservation/README.md) no se aplica automáticamente.
+
+Los apartados anteriores al registro del 2026-11-08 se conservan como antecedentes, con sus fechas y estados. No interpretar planes históricos como capacidades implementadas o aprobaciones conjuntas.
+
 Este repositorio reúne el contexto compartido del proyecto académico VulnTrack para desarrolladores y agentes de IA. La documentación central es independiente de los repositorios [backend](https://github.com/Jesel8D/vuln-track-backend), [frontend](https://github.com/Jesel8D/vuln-track-frontend) y [database](https://github.com/Jesel8D/vuln-track-database). Sus responsabilidades se describen en [arquitectura](docs/ARCHITECTURE.md).
 
 ## Consulta y mantenimiento

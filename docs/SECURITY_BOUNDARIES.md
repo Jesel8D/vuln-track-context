@@ -1,5 +1,7 @@
 # Límites de seguridad
 
+> **Actualización de estado — 2026-11-08:** Jesel aprobó individualmente el alcance del MVP de inventario/CPE/NVD sin ZAP ni workspaces operativos en primera entrega; ratificación de Rudi y detalles técnicos siguen PENDIENTES. Véanse [registro de aprobación](MVP_APPROVAL_RECORD.md) y [contrato consolidado](VULNTRACK_MVP_CONTRACT.md). El contenido anterior que sigue se conserva como antecedente; no constituye aprobación conjunta ni habilita ZAP. D-001 y D-002 permanecen intactas.
+
 ## Reglas establecidas
 
 - **ESTABLECIDA:** NVD se consulta sin replicar su base de datos completa. Una persona selecciona el CPE entre candidatos; los CVE se presentan como potencialmente aplicables hasta su verificación, sin afirmar coincidencia automática exacta.

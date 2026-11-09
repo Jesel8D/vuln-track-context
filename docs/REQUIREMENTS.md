@@ -1,5 +1,7 @@
 # Requisitos
 
+> **Actualización de estado — 2026-11-08:** Jesel aprobó individualmente el alcance del MVP de inventario/CPE/NVD sin ZAP ni workspaces operativos en primera entrega; ratificación de Rudi y detalles técnicos siguen PENDIENTES. Véanse [registro de aprobación](MVP_APPROVAL_RECORD.md) y [contrato consolidado](VULNTRACK_MVP_CONTRACT.md). El contenido anterior que sigue se conserva como antecedente; no constituye aprobación conjunta ni habilita ZAP. D-001 y D-002 permanecen intactas.
+
 ## Funcionales
 
 - **ESTABLECIDA:** registrar activos desde la aplicación móvil con tipo de dispositivo, fabricante, modelo, versión de firmware o software e identificador o etiqueta del sitio; la etiqueta de inventario y las observaciones no sensibles son opcionales.

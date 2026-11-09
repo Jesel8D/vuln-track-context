@@ -1,5 +1,7 @@
 # Contexto del proyecto
 
+> **Actualización de estado — 2026-11-08:** Jesel aprobó individualmente el alcance del MVP de inventario/CPE/NVD sin ZAP ni workspaces operativos en primera entrega; ratificación de Rudi y detalles técnicos siguen PENDIENTES. Véanse [registro de aprobación](MVP_APPROVAL_RECORD.md) y [contrato consolidado](VULNTRACK_MVP_CONTRACT.md). El contenido anterior que sigue se conserva como antecedente; no constituye aprobación conjunta ni habilita ZAP. D-001 y D-002 permanecen intactas.
+
 **ESTABLECIDA:** VulnTrack es un proyecto académico de gestión y seguimiento de vulnerabilidades informáticas. Busca registrar activos tecnológicos, consultar vulnerabilidades asociadas a productos y versiones mediante NVD y realizar análisis web controlados con OWASP ZAP Baseline.
 
 **ESTABLECIDA:** dos desarrolladores disponen de aproximadamente cuatro semanas. La prioridad es el flujo aplicación móvil → API → PostgreSQL → aplicación web. La distribución semanal y las responsabilidades individuales están **PENDIENTE** de aprobación.

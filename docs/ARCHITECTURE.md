@@ -1,5 +1,7 @@
 # Arquitectura
 
+> **Actualización de estado — 2026-11-08:** Jesel aprobó individualmente el alcance del MVP de inventario/CPE/NVD sin ZAP ni workspaces operativos en primera entrega; ratificación de Rudi y detalles técnicos siguen PENDIENTES. Véanse [registro de aprobación](MVP_APPROVAL_RECORD.md) y [contrato consolidado](VULNTRACK_MVP_CONTRACT.md). El contenido anterior que sigue se conserva como antecedente; no constituye aprobación conjunta ni habilita ZAP. D-001 y D-002 permanecen intactas.
+
 **PROPUESTA:** arquitectura modular cliente-servidor, con aplicación móvil y web que utilizan un backend para lógica de negocio, integraciones y persistencia. El diagrama [architecture.mmd](../diagrams/architecture.mmd) muestra el flujo conceptual, no un contrato de conexiones definitivo.
 
 ## Componentes y tecnologías

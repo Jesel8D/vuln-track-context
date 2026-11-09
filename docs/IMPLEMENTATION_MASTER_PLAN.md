@@ -1,5 +1,7 @@
 # Plan maestro de implementación
 
+> **Actualización de estado — 2026-11-08:** Jesel aprobó individualmente el alcance del MVP de inventario/CPE/NVD sin ZAP ni workspaces operativos en primera entrega; ratificación de Rudi y detalles técnicos siguen PENDIENTES. Véanse [registro de aprobación](MVP_APPROVAL_RECORD.md) y [contrato consolidado](VULNTRACK_MVP_CONTRACT.md). El contenido anterior que sigue se conserva como antecedente; no constituye aprobación conjunta ni habilita ZAP. D-001 y D-002 permanecen intactas.
+
 **PROPUESTA:** ruta y nombres de módulos ilustrativos sujetos a revisión humana; los archivos sugeridos no existen en los repositorios de implementación inspeccionados. No se aprueban tecnologías ni operaciones al incluirlas aquí. **ESTABLECIDA:** flujo prioritario móvil → API → PostgreSQL → web; registro y consulta de activos, CPE asistido, CVE potenciales, dashboard y ZAP Baseline restringido forman parte del alcance. Consulta la [auditoría real](REPOSITORY_READINESS.md) y [trazabilidad](REQUIREMENTS_TRACEABILITY.md).
 
 El orden propuesto construye una vertical mínima desde la semana 1 y no pospone la integración móvil: el contrato y los permisos se acuerdan antes de trabajar en paralelo, pero las interfaces pueden probarse contra dobles durante el desarrollo. ZAP requiere una prueba temprana de viabilidad de aislamiento; su ejecución solo se habilita al demostrar controles. Las duraciones son aproximadas; ningún hito implica aprobación o garantía de plazo.

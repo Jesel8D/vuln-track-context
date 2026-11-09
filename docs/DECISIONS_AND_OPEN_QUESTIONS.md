@@ -44,3 +44,7 @@ Solo D-001 y D-002 tienen aprobación formal registrada; las propuestas y cambio
 ## Database V1 provisional
 
 **PROPUESTA:** el [seguimiento Database V1](DATABASE_V1_PROGRESS.md) registra las elecciones mínimas materializadas y probadas bajo autorización de la misión actual. **PENDIENTE:** aprobar el contrato/esquema global, normalización de usernames, login operativo y permisos por recurso, política de retención y claves idempotentes; planificar evolución segura y conciliación de baseline con migraciones backend si se adopta ese stack. ZAP continúa pendiente y se rechaza en el esquema V1. No se incorporan nuevas decisiones formalmente aprobadas.
+
+## Registro parcial del MVP — 2026-11-08
+
+La [aprobación individual de Jesel](MVP_APPROVAL_RECORD.md) registra MVP-001–MVP-013 y diferencia conformidad, propuesta y directriz de preservación. La ratificación de Rudi permanece PENDIENTE en todos esos puntos. El estado global no pasa a APROBADA; decisions.json solo conserva D-001/D-002. El aplazamiento operativo de ZAP modifica el alcance previo para la primera entrega apoyada por Jesel, sin borrar requisitos históricos.
