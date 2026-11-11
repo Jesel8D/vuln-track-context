@@ -22,6 +22,7 @@
 
 - **PENDIENTE:** ¿Se aprueban las tecnologías y la arquitectura propuestas, incluido el mecanismo de aislamiento?
 - **PENDIENTE:** ¿Qué alcance y reglas tendrán la actualización detallada y la eliminación de activos?
+- **PENDIENTE:** ¿Cuál es la cantidad máxima de activos por usuario/workspace y qué política de retención aplica? Los límites de paginación de las API no son una cuota de activos.
 - **PENDIENTE:** ¿Cuáles serán los atributos, tipos, relaciones, cardinalidades, restricciones, índices, integridad e identificación del modelo?
 - **PENDIENTE:** ¿Cuáles serán los contratos completos, autenticación, autorización, roles, validaciones, errores, paginación, códigos HTTP y reglas de cada endpoint?
 - **PENDIENTE:** ¿Cómo se administrarán y verificarán los objetivos autorizados, el aislamiento y los controles de ejecución de ZAP?
