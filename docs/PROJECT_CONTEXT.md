@@ -6,6 +6,8 @@
 
 **ESTABLECIDA:** la aplicación móvil registra activos desde campo y los envía al backend; la web administra y consulta activos, permite la selección asistida de CPE, consulta CVE y visualiza hallazgos y análisis; el backend centraliza lógica, consultas externas y persistencia. PostgreSQL es la base de datos contemplada en el alcance; su adopción técnica está clasificada como **PROPUESTA**. La arquitectura y el detalle de administración están en [arquitectura](ARCHITECTURE.md) y [requisitos](REQUIREMENTS.md).
 
+**ESTABLECIDA:** el análisis ZAP Baseline se limita a objetivos web autorizados y se ejecuta desde el backend. La aplicación móvil puede registrar/consultar objetivos y solicitar/ver estados por la API cuando el flujo esté habilitado; no ejecuta ZAP localmente ni sustituye pruebas de seguridad de una app móvil nativa. El límite máximo de activos por usuario o workspace continúa **PENDIENTE** de definición; la paginación de API no fija esa cuota.
+
 ## Repositorios
 
 - Backend: https://github.com/Jesel8D/vuln-track-backend
