@@ -11,6 +11,12 @@
       "estado": "APROBADA",
       "descripcion": "El repositorio database es responsable de la configuración de PostgreSQL, scripts de inicialización, datos de demostración o seed y documentación propia; los modelos SQLAlchemy y las migraciones Alembic pertenecen al repositorio backend.",
       "justificacion_historica": "No se dispone de una justificación original registrada."
+    },
+    {
+      "id": "D-003",
+      "estado": "APROBADA",
+      "descripcion": "En el dashboard, los hallazgos se cuentan usando el análisis más reciente por tecnología y cada CVE se cuenta una vez por tecnología. El backend interpreta 'más reciente' como el análisis completado más reciente; las ejecuciones en curso y fallidas aparecen en contadores separados. Esta interpretación de estado evita tratar resultados sin completar como hallazgos y no amplía la decisión de conteo aprobada.",
+      "justificacion_historica": "El usuario eligió explícitamente la regla de último análisis por tecnología y una ocurrencia por CVE/tecnología en la conversación de trabajo del 2026-11-10."
     }
   ]
 }
