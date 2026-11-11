@@ -10,6 +10,10 @@
 
 **Estado: APROBADA.** `database` se encarga de configuración de PostgreSQL, scripts de inicialización, datos de demostración o seed y documentación propia. Los modelos SQLAlchemy y migraciones Alembic pertenecen a `backend`. Justificación histórica: No se dispone de una justificación original registrada.
 
+### D-003 — Conteo de hallazgos en el dashboard
+
+**Estado: APROBADA.** El dashboard toma el análisis más reciente por tecnología y cuenta cada CVE una vez dentro de esa tecnología. La misma CVE puede contarse de nuevo en otra tecnología. El backend interpreta “más reciente” como el análisis completado más reciente y presenta las ejecuciones en curso o fallidas en contadores separados. La selección de análisis completado es una interpretación de implementación para evitar mezclar resultados incompletos; no cambia la regla aprobada de conteo. Fuente: respuesta explícita del usuario en la conversación de trabajo del 2026-11-10.
+
 ## Propuestas técnicas
 
 **PROPUESTA:** arquitectura cliente-servidor modular; React + Vite + TypeScript para web; React Native + Expo + TypeScript para móvil; Python + FastAPI para backend; PostgreSQL, SQLAlchemy y Alembic para persistencia; Docker para aislamiento. Los endpoints de [API](API_CONTRACT.md), las entidades del [modelo](DATA_MODEL.md) y la distribución del [plan](IMPLEMENTATION_PLAN.md) también son propuestas. D-002 fija responsabilidades de repositorio sin aprobar por sí sola la adopción de todas esas tecnologías.
@@ -24,7 +28,7 @@
 - **PENDIENTE:** ¿Se aprueban la distribución semanal, las responsabilidades y los criterios de aceptación?
 - **PENDIENTE:** cualquier incorporación de una funcionalidad excluida del MVP requiere aprobación explícita.
 
-Solo D-001 y D-002 tienen aprobación formal registrada; las propuestas y cambios a decisiones aprobadas requieren autorización humana antes de tratarse como decisiones aprobadas.
+Solo D-001 a D-003 tienen aprobación formal registrada; las propuestas y cambios a decisiones aprobadas requieren autorización humana antes de tratarse como decisiones aprobadas.
 
 ## Preguntas adicionales de la auditoría
 
@@ -34,7 +38,7 @@ Solo D-001 y D-002 tienen aprobación formal registrada; las propuestas y cambio
 - **PENDIENTE:** ¿Qué política de sesiones, permisos por recurso y retención de registros se aprueba? ¿Cómo se gestionan los secretos operativos propios sin almacenar secretos de clientes?
 - **PENDIENTE:** ¿Quién autoriza, modifica y revoca destinos de prueba? ¿Qué mecanismos de salida por conexión, DNS y redirecciones se pueden probar antes de ejecutar ZAP?
 - **PENDIENTE:** ¿Qué estados y transiciones tendrán las ejecuciones y hallazgos, y cómo se conserva la evidencia histórica?
-- **PENDIENTE:** ¿Cómo se calcularán las métricas del dashboard y la deduplicación, y qué versiones y fuentes de CVSS se mostrarán?
+- **PENDIENTE:** ¿Qué versiones y fuentes de CVSS se mostrarán y cómo se indicará la vigencia de esos datos?
 - **PENDIENTE:** ¿Qué plataformas, versiones, entornos, presupuesto y criterios cuantitativos de finalización tendrá el MVP?
 
 ## Paquete de decisiones preparado
