@@ -1,0 +1,120 @@
+{
+  "result": "passed",
+  "checks": [
+    "three owned dual-stack internal bridges, no published ports or host mounts",
+    "worker kernel OUTPUT DROP forces the gateway on IPv4 and IPv6",
+    "gateway kernel INPUT/OUTPUT/FORWARD DROP and forwarding disabled",
+    "untrusted worker cannot change firewall, open raw sockets or read control credentials",
+    "live worker root filesystem, cgroup limits and private-key permissions audited",
+    "private IPv4/IPv6 canaries independently confirmed listening",
+    "real API verify stays 503 with zero DNS and zero durable attempts",
+    "allowed operation reaches real IPv4 TLS only through gateway and controlled DNS",
+    "consumed operation cannot be replayed on another connection",
+    "allowed operation reaches real IPv6 TLS through IPv6 gateway ingress",
+    "original Host and SNI verified by the separate TLS fixture",
+    "raw worker TCP denied: allowed TLS IP directly without gateway",
+    "raw worker TCP denied: unauthorized IPv4 and IPv6",
+    "raw worker TCP denied: non-HTTPS ports",
+    "raw worker TCP denied: simulated Windows and WSL hosts",
+    "raw worker TCP denied: simulated PostgreSQL and Backend",
+    "raw worker TCP denied: simulated Docker API and alternate proxy",
+    "raw worker TCP denied: unapproved DNS TCP",
+    "raw worker TCP denied: metadata representation",
+    "listening localhost IPv4/IPv6 services unreachable even in worker namespace",
+    "worker UDP DNS cannot bypass the mandatory gateway",
+    "raw gateway TCP independently denied: private services",
+    "raw gateway TCP independently denied: unapproved TLS IP",
+    "raw gateway TCP independently denied: unapproved TLS port",
+    "gateway UDP denied despite allowing operator DNS TCP",
+    "worker cannot supply host, IP, port, workspace or arbitrary egress rules",
+    "unknown operation fails closed without upstream connection",
+    "forged control authentication rejected over the actual TCP control channel",
+    "real HTTPS redirect denied without contacting metadata canary",
+    "DNS set differing from the authorized permit denied before TLS",
+    "DNS rebinding between fresh resolutions denied",
+    "DNS failure has no system resolver fallback or permissive retry",
+    "real SQL challenge revocation prevents new connections",
+    "changed declaration invalidates the bound target version",
+    "expired policy prevents new connections",
+    "SQL revocation closes an already active gateway TLS socket within measured bound",
+    "revoked active operation cannot reuse its previous policy",
+    "expiry during operation cancels TLS and releases no buffered result",
+    "concurrent consumption of the same operation is denied",
+    "distinct scoped operations proceed concurrently without sharing a tunnel",
+    "existing worker connection cannot be reused for another request",
+    "loss of authorization broker heartbeat closes active TLS and denies new work",
+    "control service outage fails closed for active and new operations",
+    "authority restart cannot resurrect an old unconsumed policy",
+    "recovery requires a freshly issued policy bound to the new authority epoch",
+    "gateway restart closes old connections and rejects old epoch policies",
+    "gateway recovery applies kernel filters before serving new operations",
+    "IPv4/IPv6 denials repeated after gateway restart with fresh kernel counters",
+    "all forbidden canaries received zero adversarial TCP or UDP traffic",
+    "IPv4 and IPv6 kernel counters prove drops independently of Python and routing",
+    "live kernel rules and counters retained as private reproducible evidence"
+  ],
+  "measurements": {
+    "revocation_to_active_tls_close_seconds": 0.591,
+    "broker_loss_to_denial_seconds": 1.181,
+    "broker_successful_refreshes": 146,
+    "broker_read_or_publish_errors": 4,
+    "broker_invalidated_scope_observations": 64,
+    "maximum_broker_snapshot_refresh_seconds": 0.562,
+    "worker_kernel_dropped_packets": {
+      "ipv4": 13,
+      "ipv6": 14
+    },
+    "gateway_kernel_dropped_packets": {
+      "ipv4": 2,
+      "ipv6": 16
+    }
+  },
+  "image_id": "sha256:cd012237146bc80f95adbf60e0fb7ff6f561c09c98cf34ffe3ef46b3cfba935f",
+  "build_source_sha256": {
+    "app/services/web_target_policy.py": "c0850aaaf4db34ca51f363fb4777a6908066bff138d2a2791b40fecd349098e7",
+    "app/services/web_target_transport.py": "3a4d80680c32a77e117d6ea7c8df23c2495f86ed2dfa57f4421cf4f6fceaee45",
+    "app/services/controlled_dns.py": "ce4c9a33b7757b14f1f2532f11c1dfd022f88ebdfd8926be147e1b7d3884dfc6",
+    "laboratory/phase2c/Dockerfile": "41f31599962ef7373c97bc76a8bb40aaeeecce1455a56d7dc6ecfefaf4e02bae",
+    "laboratory/phase2c/policy.py": "a8bf5aacd737d448a567b247748a871abb6cb495859b92b06645438260865082",
+    "laboratory/phase2c/protocol.py": "074b628393e3bd58083b4be1c63f574eb4c0d2d3266698a783ec59de445d208d",
+    "laboratory/phase2c/authority.py": "9d3fe2b7a21db676b7169648cb340643af3c1d8ab208259d9e72cb0363c66576",
+    "laboratory/phase2c/gateway.py": "3c2b17a45cbbd073a346fb1ae5dc7c4459f0eaca72e291d969aebb4cc7c005b5",
+    "laboratory/phase2c/fixture.py": "15614c7b81066256539c1e26b7b02346a0d3de31d5648473876782ba00feed99",
+    "laboratory/phase2c/probe.py": "260e0986d708beb92c187888da052657a76d98b07d08e2013f31e56fd57b58d1"
+  },
+  "topology": "three owned internal dual-stack bridges with separate mandatory gateway",
+  "worker_security": {
+    "ReadonlyRootfs": true,
+    "CapDrop": [
+      "ALL"
+    ],
+    "CapAdd": null,
+    "Privileged": false,
+    "Memory": 134217728,
+    "MemorySwap": 134217728,
+    "NanoCpus": 500000000,
+    "PidsLimit": 32,
+    "SecurityOpt": [
+      "no-new-privileges:true"
+    ],
+    "LogConfig": {
+      "Type": "local",
+      "Config": {
+        "max-file": "2",
+        "max-size": "1m"
+      }
+    }
+  },
+  "external_target_requests": false,
+  "public_egress_demonstrated": false,
+  "public_egress_status": "BLOQUEADO",
+  "runtime_verification_enabled": false,
+  "zap_installed_or_executed": false,
+  "personal_database_used": false,
+  "disposable_database_used": true,
+  "database_credentials_in_worker_gateway_authority": false,
+  "host_firewall_changed": false,
+  "owned_containers_and_networks_removed": true,
+  "revocation": "bounded gateway cancellation; not instantaneous kernel revocation",
+  "in_scope": "untrusted worker; trusted gateway, broker, policy service, host and daemon"
+}

@@ -1,0 +1,110 @@
+{
+  "mission": "VulnTrack V2 Phase 2C",
+  "classification": "IMPLEMENTADO CON LIMITACIONES",
+  "backend": {
+    "existing": {
+      "passed": 734,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 212.85
+    },
+    "new": {
+      "passed": 734,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 209.31
+    },
+    "new_unique_cases": 57,
+    "retained_cases_repeated": 677
+  },
+  "sql": {
+    "checks_per_path": 120,
+    "new_cases": 0,
+    "adversarial_separate": 27
+  },
+  "frontend": {
+    "unit_passed": 96,
+    "new_cases": 0,
+    "browser_existing_passed": 6,
+    "browser_new_passed": 6,
+    "browser_existing_seconds": 21.0,
+    "browser_new_seconds": 18.9,
+    "viewport_widths": [
+      1440,
+      390
+    ],
+    "axe_passed": true
+  },
+  "new_egress_lab": {
+    "passed": 51,
+    "measurements": {
+      "revocation_to_active_tls_close_seconds": 0.591,
+      "broker_loss_to_denial_seconds": 1.181,
+      "broker_successful_refreshes": 146,
+      "broker_read_or_publish_errors": 4,
+      "broker_invalidated_scope_observations": 64,
+      "maximum_broker_snapshot_refresh_seconds": 0.562,
+      "worker_kernel_dropped_packets": {
+        "ipv4": 13,
+        "ipv6": 14
+      },
+      "gateway_kernel_dropped_packets": {
+        "ipv4": 2,
+        "ipv6": 16
+      }
+    },
+    "public_egress_demonstrated": false,
+    "public_egress_status": "BLOQUEADO"
+  },
+  "prior_phase2b_lab_repeated": {
+    "passed": 45
+  },
+  "persistence_restart_restore_compatibility": {
+    "passed": 7
+  },
+  "postman": {
+    "existing": {
+      "assertions": 288,
+      "http_requests": 75,
+      "failed": 0
+    },
+    "new": {
+      "assertions": 303,
+      "http_requests": 78,
+      "failed": 0
+    },
+    "persistent_contract_disposable": {
+      "assertions": 200,
+      "http_requests": 53,
+      "failed": 0
+    }
+  },
+  "openapi": {
+    "operations": 44,
+    "defined_collection_requests": 71,
+    "pydantic_request_bodies_checked": 23,
+    "positive_examples_checked": 49,
+    "sha256": "082d1c6a0b84564b8814ede1724b5d72e54249d5fd9893d65149b0af00133b16"
+  },
+  "checks": [
+    "ruff",
+    "pip check",
+    "TypeScript",
+    "ESLint",
+    "production build",
+    "git diff --check",
+    "private value/key scan",
+    "documentation links",
+    "successful image source hashes"
+  ],
+  "initial_layout_issue": {
+    "failed_cases": 4,
+    "cause": "Missing sibling Database checkout in new worktree layout",
+    "resolved_by": "Detached compatible Database worktree; both final full suites rerun",
+    "tests_omitted_or_relaxed": false
+  },
+  "operational_remote_verification_enabled": false,
+  "zap_installed_or_executed": false,
+  "external_target_requests": false,
+  "personal_database_used_for_tests": false
+}

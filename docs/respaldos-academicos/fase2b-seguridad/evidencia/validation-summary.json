@@ -1,0 +1,89 @@
+{
+  "mission": "VulnTrack V2 Phase 2B",
+  "status": "IMPLEMENTADO CON LIMITACIONES",
+  "backend": {
+    "existing": {
+      "passed": 677,
+      "failed": 0,
+      "skipped": 0
+    },
+    "new": {
+      "passed": 677,
+      "failed": 0,
+      "skipped": 0
+    },
+    "new_unique_cases": 79,
+    "retained_cases": 598,
+    "new_case_groups": {
+      "dns_unit": 39,
+      "integration_lifecycle_rls": 32,
+      "integration_drift": 7,
+      "http_contract": 1
+    }
+  },
+  "sql": {
+    "checks_per_path": 120,
+    "new_checks_per_path": 24,
+    "retained_checks_repeated": 96,
+    "adversarial_separate": 27
+  },
+  "frontend": {
+    "unit_passed": 96,
+    "new_unit_cases": 10,
+    "retained_unit_cases": 86,
+    "browser_existing_passed": 6,
+    "browser_new_passed": 6,
+    "viewport_widths": [
+      1440,
+      390
+    ],
+    "axe_passed": true,
+    "overflow_checks_passed": true
+  },
+  "network_laboratory": {
+    "passed": 45,
+    "retained_checks_repeated": 27,
+    "additional_checks": 18,
+    "production_egress_guarantee": false
+  },
+  "postman": {
+    "existing": {
+      "assertions": 298,
+      "http_requests": 77,
+      "failed": 0
+    },
+    "new": {
+      "assertions": 293,
+      "http_requests": 76,
+      "failed": 0
+    },
+    "persistent_contract_disposable": {
+      "assertions": 200,
+      "http_requests": 53,
+      "failed": 0
+    }
+  },
+  "openapi": {
+    "operations": 44,
+    "retained_operations": 39,
+    "new_operations": 5,
+    "defined_collection_requests": 71,
+    "pydantic_request_bodies_checked": 23,
+    "positive_examples_checked": 49,
+    "sha256": "082d1c6a0b84564b8814ede1724b5d72e54249d5fd9893d65149b0af00133b16"
+  },
+  "persistence_restart_restore_old_code_compatibility": "passed",
+  "checks": [
+    "ruff",
+    "pip check",
+    "TypeScript",
+    "ESLint",
+    "production build",
+    "git diff --check",
+    "staged private-value and private-key scan"
+  ],
+  "operational_remote_verification_enabled": false,
+  "zap_installed_or_executed": false,
+  "external_target_requests": false,
+  "personal_database_used_for_tests": false
+}

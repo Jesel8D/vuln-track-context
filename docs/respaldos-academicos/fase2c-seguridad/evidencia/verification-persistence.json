@@ -1,0 +1,17 @@
+{
+  "result": "passed",
+  "checks": [
+    "durable challenge digest and laboratory provenance",
+    "IDs, state, attempts and evidence dates identical after full database restart",
+    "backup and restore into another NEW volume",
+    "RLS remains enabled and forced",
+    "old stable and Phase 2A code read compatible core without dropping extension data",
+    "original JWT stable after restart and invalid after restore",
+    "no laboratory evidence counted as real domain control"
+  ],
+  "source_volume": "vulntrack_v2_verification_test_459e72960c_pgdata",
+  "restore_volume": "vulntrack_v2_verification_test_restore_459e72960c_pgdata",
+  "volumes_retained": true,
+  "personal_database_used": false,
+  "zap_executed": false
+}

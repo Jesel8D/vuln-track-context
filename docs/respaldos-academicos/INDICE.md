@@ -22,3 +22,15 @@ Copias de informes, gu?as y aceptaci?n RC1 conservadas para respaldo. Se anonimi
 - [REPORTE_FASE2B_SEGURIDAD.md](REPORTE_FASE2B_SEGURIDAD.md)
 - [REPORTE_FASE2C_SEGURIDAD.md](REPORTE_FASE2C_SEGURIDAD.md)
 - [REPORTE_V2_RC1.md](REPORTE_V2_RC1.md)
+
+## Resultados t?cnicos JSON hist?ricos
+
+Copias ?ntegras de resultados de laboratorios y validaciones con datos ficticios; no constituyen una ejecuci?n nueva.
+
+- [fase2b-seguridad/evidencia/network-lab-results.json](fase2b-seguridad/evidencia/network-lab-results.json)
+- [fase2b-seguridad/evidencia/validation-summary.json](fase2b-seguridad/evidencia/validation-summary.json)
+- [fase2b-seguridad/evidencia/verification-persistence.json](fase2b-seguridad/evidencia/verification-persistence.json)
+- [fase2c-seguridad/evidencia/egress-lab-results.json](fase2c-seguridad/evidencia/egress-lab-results.json)
+- [fase2c-seguridad/evidencia/phase2b-network-lab-results.json](fase2c-seguridad/evidencia/phase2b-network-lab-results.json)
+- [fase2c-seguridad/evidencia/validation-summary.json](fase2c-seguridad/evidencia/validation-summary.json)
+- [fase2c-seguridad/evidencia/verification-persistence.json](fase2c-seguridad/evidencia/verification-persistence.json)
