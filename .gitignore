@@ -1,0 +1,31 @@
+# Secretos y configuración local
+.env
+.env.*
+!.env.example
+*.local
+
+# Archivos temporales y copias locales
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editores e IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Cachés y artefactos generados
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+dist/
