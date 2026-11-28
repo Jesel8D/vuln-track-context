@@ -36,6 +36,7 @@ Los borradores y criterios concretos son **PROPUESTA**; las decisiones y definic
 ## Auditoría y plan de implementación
 
 - [Estado real de los repositorios](docs/REPOSITORY_READINESS.md) y [plan maestro](docs/IMPLEMENTATION_MASTER_PLAN.md).
+- [Revisión de controles de seguridad (27-11-2026)](docs/SECURITY_CONTROLS_REVIEW_2026-11-27.md): controles observados, correcciones aplicadas y brechas abiertas; no es una certificación ni una calificación del profesor.
 - [Distribución propuesta entre desarrolladores](docs/DEVELOPER_WORK_DISTRIBUTION.md), [estrategia de pruebas](docs/TEST_STRATEGY.md) y [registro de riesgos](docs/TECHNICAL_RISK_REGISTER.md).
 - [Diagrama de dependencias y puntos de integración](diagrams/implementation_roadmap.mmd).
 
