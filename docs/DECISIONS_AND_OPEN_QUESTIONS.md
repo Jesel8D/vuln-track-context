@@ -10,36 +10,40 @@
 
 **Estado: APROBADA.** `database` se encarga de configuración de PostgreSQL, scripts de inicialización, datos de demostración o seed y documentación propia. Los modelos SQLAlchemy y migraciones Alembic pertenecen a `backend`. Justificación histórica: No se dispone de una justificación original registrada.
 
+### D-003 — Alcance web únicamente
+
+**Estado: APROBADA por instrucción explícita del usuario solicitante el 2026-11-27.** VulnTrack será solo web; no se desarrollará una aplicación móvil dentro del proyecto. Fuente: mensaje de este chat, «descarta lo movil, solo quedará en web». Esta decisión reemplaza la prioridad móvil descrita en documentos previos; no aprueba por sí misma el despliegue público ni habilita ZAP.
+
 ## Propuestas técnicas
 
-**PROPUESTA:** arquitectura cliente-servidor modular; React + Vite + TypeScript para web; React Native + Expo + TypeScript para móvil; Python + FastAPI para backend; PostgreSQL, SQLAlchemy y Alembic para persistencia; Docker para aislamiento. Los endpoints de [API](API_CONTRACT.md), las entidades del [modelo](DATA_MODEL.md) y la distribución del [plan](IMPLEMENTATION_PLAN.md) también son propuestas. D-002 fija responsabilidades de repositorio sin aprobar por sí sola la adopción de todas esas tecnologías.
+**ESTABLECIDA:** el stack implementado consta de cliente web React + Vite + TypeScript, API Python + FastAPI y PostgreSQL con SQLAlchemy/Alembic en backend. El navegador se conecta a la API, no a PostgreSQL. Docker Compose está preparado para los entornos documentados. Las funciones y limitaciones vigentes se describen en los README de cada repositorio.
 
 ## Preguntas abiertas y autorización humana
 
-- **PENDIENTE:** ¿Se aprueban las tecnologías y la arquitectura propuestas, incluido el mecanismo de aislamiento?
+- **PENDIENTE:** ratificar con el segundo desarrollador el alcance y los detalles técnicos del MVP, sin alterar D-003 aprobada por el usuario solicitante.
 - **PENDIENTE:** ¿Qué alcance y reglas tendrán la actualización detallada y la eliminación de activos?
 - **PENDIENTE:** ¿Cuáles serán los atributos, tipos, relaciones, cardinalidades, restricciones, índices, integridad e identificación del modelo?
 - **PENDIENTE:** ¿Cuáles serán los contratos completos, autenticación, autorización, roles, validaciones, errores, paginación, códigos HTTP y reglas de cada endpoint?
-- **PENDIENTE:** ¿Cómo se administrarán y verificarán los objetivos autorizados, el aislamiento y los controles de ejecución de ZAP?
+- **PENDIENTE:** autorización de objetivos, aislamiento y controles de ZAP, porque ZAP no forma parte del MVP actual. Reabrir solo ante aprobación explícita de una fase posterior.
 - **PENDIENTE:** ¿Se aprueban la distribución semanal, las responsabilidades y los criterios de aceptación?
 - **PENDIENTE:** cualquier incorporación de una funcionalidad excluida del MVP requiere aprobación explícita.
 
-Solo D-001 y D-002 tienen aprobación formal registrada; las propuestas y cambios a decisiones aprobadas requieren autorización humana antes de tratarse como decisiones aprobadas.
+Las decisiones D-001, D-002 y D-003 están formalmente registradas; cualquier cambio posterior requiere autorización humana.
 
 ## Preguntas adicionales de la auditoría
 
-- **PENDIENTE:** ¿La conservación del formulario debe sobrevivir al cierre de la aplicación y cómo se protegerá localmente?
+- **PENDIENTE:** ¿Qué objetivos medibles de rendimiento, disponibilidad y accesibilidad se requieren para la aplicación web?
 - **PENDIENTE:** ¿Cuál será la vigencia y el comportamiento de las claves de idempotencia, especialmente ante respuestas perdidas?
 - **PENDIENTE:** ¿Qué hacer cuando no existe un CPE adecuado o su versión no permite el filtro de NVD? ¿Cómo presentar resultados parciales o desactualizados?
 - **PENDIENTE:** ¿Qué política de sesiones, permisos por recurso y retención de registros se aprueba? ¿Cómo se gestionan los secretos operativos propios sin almacenar secretos de clientes?
 - **PENDIENTE:** ¿Quién autoriza, modifica y revoca destinos de prueba? ¿Qué mecanismos de salida por conexión, DNS y redirecciones se pueden probar antes de ejecutar ZAP?
 - **PENDIENTE:** ¿Qué estados y transiciones tendrán las ejecuciones y hallazgos, y cómo se conserva la evidencia histórica?
 - **PENDIENTE:** ¿Cómo se calcularán las métricas del dashboard y la deduplicación, y qué versiones y fuentes de CVSS se mostrarán?
-- **PENDIENTE:** ¿Qué plataformas, versiones, entornos, presupuesto y criterios cuantitativos de finalización tendrá el MVP?
+- **PENDIENTE:** ¿Qué entorno, presupuesto y criterios cuantitativos de finalización tendrá el MVP?
 
 ## Paquete de decisiones preparado
 
-**PENDIENTE:** revisar individualmente las alternativas y recomendaciones de [DECISION_APPROVAL_CHECKLIST.md](DECISION_APPROVAL_CHECKLIST.md), incluida la ubicación de la aplicación móvil, la matriz de versiones compatibles, el modelo de identidad, la política de claves idempotentes. La rama del plan maestro y la del paquete se integraron en `dev/jesel` el 30-10-2026; esa integración documental no aprueba sus propuestas técnicas. Las recomendaciones de ese paquete no alteran D-001 ni D-002 ni constituyen autorización humana.
+Los documentos de propuesta heredados conservan su texto como antecedente. Las recomendaciones de ubicación y tecnología móvil quedan fuera del alcance por D-003; revisar solo las propuestas web, identidad y claves idempotentes antes de tratarlas como decisión.
 
 ## Database V1 provisional
 
@@ -47,4 +51,4 @@ Solo D-001 y D-002 tienen aprobación formal registrada; las propuestas y cambio
 
 ## Registro parcial del MVP — 2026-11-08
 
-La [aprobación individual de Jesel](MVP_APPROVAL_RECORD.md) registra MVP-001–MVP-013 y diferencia conformidad, propuesta y directriz de preservación. La ratificación de Rudi permanece PENDIENTE en todos esos puntos. El estado global no pasa a APROBADA; decisions.json solo conserva D-001/D-002. El aplazamiento operativo de ZAP modifica el alcance previo para la primera entrega apoyada por Jesel, sin borrar requisitos históricos.
+La [aprobación individual de Jesel](MVP_APPROVAL_RECORD.md) registra MVP-001–MVP-013 y diferencia conformidad, propuesta y directriz de preservación. La ratificación técnica de Rudi permanece PENDIENTE; D-003 registra por separado el alcance web-only instruido el 2026-11-27. ZAP sigue fuera del MVP; las decisiones D-001–D-003 constan en `context/decisions.json`.
