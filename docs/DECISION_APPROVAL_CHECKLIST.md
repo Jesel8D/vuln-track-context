@@ -1,6 +1,8 @@
 # Matriz para autorización humana
 
-Todas las filas están **PENDIENTE**; sus recomendaciones son **PROPUESTA**. D-001 y D-002 permanecen **APROBADA** y no se reabren en esta matriz. Responder por identificador con «aprobar», «rechazar» o una alternativa; una recomendación no se convierte en aprobación por silencio. Una aprobación debe registrarse de forma explícita por una persona autorizada antes de aplicar cambios de estado en las decisiones centrales.
+> La fila sobre ubicación móvil quedó resuelta por D-003 el 2026-11-27: cliente móvil descartado, producto web-only. Las demás propuestas conservan su estado y requieren aprobación por separado.
+
+Las filas conservan su estado individual; P-03 está **APROBADA** por D-003. Las demás filas siguen **PENDIENTE** y sus recomendaciones son **PROPUESTA**. D-001 y D-002 permanecen **APROBADA** y no se reabren en esta matriz. Responder por identificador con «aprobar», «rechazar» o una alternativa; una recomendación no se convierte en aprobación por silencio. Una aprobación debe registrarse de forma explícita por una persona autorizada antes de aplicar cambios de estado en las decisiones centrales.
 
 Cada fila expresa situación, alternativas y recomendación; la columna de consecuencia incluye impacto técnico, riesgo de no decidir y dependencias. Ninguna casilla está marcada de antemano.
 
@@ -10,7 +12,7 @@ Cada fila expresa situación, alternativas y recomendación; la columna de conse
 |---|---|---|---|---|
 | P-01 Stack backend | Sin tecnología aprobada; FastAPI/Python o Express/TypeScript. | FastAPI/Python si equipo lo domina; reduce trabajo inicial de OpenAPI. Express si experiencia TS es mayor. | Define dependencias y pruebas; sin elección no preparar backend. Depende de experiencia real y P-02. | PENDIENTE / aprobación humana |
 | P-02 Versiones y entorno | Sin matriz validada; fijar versiones probadas o posponer selección. | Elegir versiones soportadas y verificar conjunto antes de fijarlas, sin números no comprobados. | Evita incompatibilidad; bloqueo de CI/entorno; depende de P-01 y plataformas. | PENDIENTE / aprobación humana |
-| P-03 Ubicación móvil | Sin ubicación aprobada; frontend, repositorio separado o monorepo. | Dos aplicaciones separadas en frontend; reduce administración para dos personas. | Cambia organización y CI; sin decisión no crear proyecto. Depende de permisos y [comparativa](MOBILE_REPOSITORY_STRATEGY.md). | PENDIENTE / aprobación humana |
+| P-03 Alcance móvil | D-003 descarta aplicación móvil; VulnTrack será web solamente. | No crear cliente móvil; las vistas actuales se implementan como web. | No requiere ubicación ni repositorio móvil. La recomendación anterior queda como antecedente. | APROBADA / instrucción explícita del usuario solicitante, 2026-11-27 |
 | P-04 Base/ORM | PostgreSQL contemplado, adopción propuesta; SQLAlchemy/Alembic o ORM alternativo. | PostgreSQL y SQLAlchemy/Alembic si P-01 Python. | Define persistencia; no hay entorno ni migración. Respeta D-002; alternativa Node y su ubicación deben aclararse. | PENDIENTE / aprobación humana |
 | P-05 Identidad/permisos | Identidad local o proveedor; roles y límites no definidos. | Sesiones revocables e identidad local solo si no hay proveedor institucional; roles mínimos por recurso. | Bloquea protección de API/clientes; requiere P-01 y administración de usuarios. Ver [propuesta](IDENTITY_AND_ACCESS_PROPOSAL.md). | PENDIENTE / aprobación humana |
 
