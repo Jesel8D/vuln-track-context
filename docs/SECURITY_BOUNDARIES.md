@@ -1,16 +1,15 @@
 # Límites de seguridad
 
-> **Actualización de estado — 2026-11-08:** Jesel aprobó individualmente el alcance del MVP de inventario/CPE/NVD sin ZAP ni workspaces operativos en primera entrega; ratificación de Rudi y detalles técnicos siguen PENDIENTES. Véanse [registro de aprobación](MVP_APPROVAL_RECORD.md) y [contrato consolidado](VULNTRACK_MVP_CONTRACT.md). El contenido anterior que sigue se conserva como antecedente; no constituye aprobación conjunta ni habilita ZAP. D-001 y D-002 permanecen intactas.
+> **Actualización de estado — 2026-11-27:** producto web únicamente (D-003); el cliente móvil queda descartado. NVD live es una capacidad opt-in del backend, no se activa por una bandera pública del frontend. ZAP no es operativo dentro del alcance MVP aprobado individualmente. Véase [pendientes actuales](REMAINING_WORK_2026-11-27.md).
 
 ## Reglas establecidas
 
 - **ESTABLECIDA:** NVD se consulta sin replicar su base de datos completa. Una persona selecciona el CPE entre candidatos; los CVE se presentan como potencialmente aplicables hasta su verificación, sin afirmar coincidencia automática exacta.
-- **ESTABLECIDA:** solo se contempla OWASP ZAP Baseline, en análisis aislados y controlados de objetivos web autorizados y previamente incluidos en una lista permitida. No se permiten URLs arbitrarias ni Active Scan; tampoco análisis de routers, firewalls, redes completas o dispositivos físicos.
-- **ESTABLECIDA:** Baseline no garantiza detectar SQL Injection ni otras vulnerabilidades específicas.
+- **PENDIENTE:** ZAP Baseline no es un servicio operativo del MVP actual. No ejecutar ZAP ni pruebas activas de dispositivos o redes. Una fase futura deberá diseñar y probar autorización de objetivos, lista permitida, aislamiento y política de salida.
 - **ESTABLECIDA:** las observaciones de activos son no sensibles. No almacenar contraseñas administrativas de routers ni secretos de clientes; no incluir credenciales, tokens ni claves en la documentación.
 
 ## Medidas y definiciones pendientes
 
-- **PROPUESTA:** Docker para aislamiento; su adopción requiere aprobación.
-- **PENDIENTE:** mecanismo de aislamiento, validación y administración de la lista permitida, verificación de autorización del objetivo y controles concretos de ejecución.
-- **PENDIENTE:** autenticación, autorización, roles, gestión de credenciales operativas, protección de datos y controles de acceso. No se cuenta con diseños aprobados.
+- **ESTABLECIDA:** el código implementa autenticación, autorización por propietario en V1 y por workspace en V2, con sesiones JWT y límites descritos en la documentación de los repositorios.
+- **PENDIENTE:** filtro de salida de red en infraestructura, revocación individual de JWT, límites de abuso compartidos entre réplicas, análisis actual de imágenes y validación del host/respaldo.
+- **PENDIENTE:** ratificación técnica conjunta del alcance aprobado individualmente; consultar [registro](MVP_APPROVAL_RECORD.md) y [revisión de seguridad](SECURITY_CONTROLS_REVIEW_2026-11-27.md).
