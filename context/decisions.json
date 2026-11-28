@@ -11,6 +11,12 @@
       "estado": "APROBADA",
       "descripcion": "El repositorio database es responsable de la configuración de PostgreSQL, scripts de inicialización, datos de demostración o seed y documentación propia; los modelos SQLAlchemy y las migraciones Alembic pertenecen al repositorio backend.",
       "justificacion_historica": "No se dispone de una justificación original registrada."
+    },
+    {
+      "id": "D-003",
+      "estado": "APROBADA",
+      "descripcion": "El alcance de VulnTrack será solo web; no se desarrollará una aplicación móvil dentro de este proyecto.",
+      "justificacion_historica": "Autorización explícita del usuario solicitante en este chat el 2026-11-27: «descarta lo movil, solo quedará en web»."
     }
   ]
 }
