@@ -1,13 +1,15 @@
 # VulnTrack: contexto central
 
-## Continuación y estado actual — 2026-11-08
+## Continuación y estado actual — 2026-11-27
 
-**Contrato del MVP aprobado por Jesel, pendiente de ratificación por Rudi.** Aprobación individual de alcance, detalle técnico PROPUESTA y estado conjunto PENDIENTE; D-001/D-002 se conservan.
+**Alcance web-only aprobado explícitamente por el usuario solicitante (D-003).** El contrato del MVP registrado por Jesel el 2026-11-08 sigue pendiente de ratificación técnica por Rudi; detalles técnicos y aceptación global no se consideran cerrados. ZAP continúa aplazado.
 
 1. Leer [PROJECT_MASTER_CONTEXT](docs/PROJECT_MASTER_CONTEXT.md), [PROJECT_HANDOFF](docs/PROJECT_HANDOFF.md) y [registro de aprobación](docs/MVP_APPROVAL_RECORD.md).
 2. Revisar [contrato maestro](docs/VULNTRACK_MVP_CONTRACT.md) y [decisiones para aprobación](research/mvp-consolidation/DECISIONES_PARA_APROBACION.md).
 3. Recuperar desde otra computadora con [SETUP_NEW_PC](docs/SETUP_NEW_PC.md) y comprobar [inventario remoto](docs/REMOTE_BACKUP_INVENTORY.md).
 4. Investigación/auditorías se conservan en [research](research/SOURCE_IMPORT_MANIFEST.md); [parche local pendiente](research/local-preservation/README.md) no se aplica automáticamente.
+
+5. Para ver estado actual, riesgos y bloqueos por repositorio, consultar [pendientes a 27-11-2026](docs/REMAINING_WORK_2026-11-27.md), [revisión de seguridad](docs/SECURITY_CONTROLS_REVIEW_2026-11-27.md) e [historial de atribución](docs/AUTHOR_HISTORY_REATTRIBUTION_2026-11-27.md). Las propuestas móviles y planes anteriores se conservan como historia, no como alcance vigente.
 
 Los apartados anteriores al registro del 2026-11-08 se conservan como antecedentes, con sus fechas y estados. No interpretar planes históricos como capacidades implementadas o aprobaciones conjuntas.
 
@@ -17,7 +19,7 @@ Este repositorio reúne el contexto compartido del proyecto académico VulnTrack
 
 Antes de trabajar, lee [contexto](docs/PROJECT_CONTEXT.md), [requisitos](docs/REQUIREMENTS.md), [decisiones y preguntas](docs/DECISIONS_AND_OPEN_QUESTIONS.md), [límites de seguridad](docs/SECURITY_BOUNDARIES.md) y el documento específico de la tarea. Los índices legibles por máquina están en `context/`; `docs/` contiene la documentación y `diagrams/` los diagramas Mermaid. [AGENTS.md](AGENTS.md) establece instrucciones para agentes.
 
-Los estados formales son `ESTABLECIDA` para alcance y restricciones conocidos, `APROBADA` para decisiones autorizadas, `PROPUESTA` para alternativas y `PENDIENTE` para definiciones faltantes. Solo D-001 y D-002 son decisiones formalmente aprobadas.
+Los estados formales son `ESTABLECIDA` para alcance y restricciones conocidos, `APROBADA` para decisiones autorizadas, `PROPUESTA` para alternativas y `PENDIENTE` para definiciones faltantes. D-001, D-002 y D-003 están registradas como aprobadas; la ratificación técnica global del MVP sigue pendiente.
 
 Al actualizar, identifica la fuente y el estado de cada cambio, mantén coherentes documentos, JSON y diagramas, y no presentes propuestas como aprobaciones. Registra una decisión con identificador, descripción, estado y justificación histórica verificable en `context/decisions.json` y `docs/DECISIONS_AND_OPEN_QUESTIONS.md`; una aprobación requiere autorización humana. Si hay contradicciones, señálalas y consulta a una persona responsable antes de resolverlas por suposición. No alteres decisiones aprobadas sin autorización humana.
 
@@ -26,6 +28,7 @@ Las contribuciones deben ser concretas, revisables y limitarse al alcance autori
 ## Índice de ingeniería
 
 - [Auditoría documental](docs/DOCUMENTATION_AUDIT.md) y [trazabilidad de requisitos](docs/REQUIREMENTS_TRACEABILITY.md).
+- [Descripción About y topics propuestos para GitHub](docs/GITHUB_ABOUT.md); el dueño debe aplicarlos en la sección lateral del repositorio.
 - [Criterios de aceptación](docs/ACCEPTANCE_CRITERIA.md) y [revisión de preparación](docs/IMPLEMENTATION_READINESS_REVIEW.md).
 - [Investigación de integraciones](docs/EXTERNAL_INTEGRATIONS.md), [borrador de API](docs/API_CONTRACT_DRAFT.md) y [diccionario de datos propuesto](docs/DATA_DICTIONARY_DRAFT.md).
 - [Modelo de amenazas](docs/THREAT_MODEL.md) y [evaluación de tecnologías](docs/STACK_EVALUATION.md).
@@ -45,7 +48,7 @@ La planificación es **PROPUESTA**; los requisitos establecidos y las decisiones
 ## Paquete de decisiones y diagnóstico
 
 - [Diagnóstico de repositorios](docs/REPOSITORY_ACCESS_DIAGNOSTICS.md) y [comparativa técnica](docs/TECHNICAL_DECISION_PACKAGE.md).
-- [Ubicación móvil](docs/MOBILE_REPOSITORY_STRATEGY.md), [contrato de activos](docs/ASSET_CONTRACT_PROPOSAL.md) y [modelo propuesto](docs/DATA_MODEL_PROPOSAL.md).
+- [Contrato de activos](docs/ASSET_CONTRACT_PROPOSAL.md) y [modelo propuesto](docs/DATA_MODEL_PROPOSAL.md). Los análisis de ubicación móvil se conservan solo como antecedentes; D-003 descarta el cliente móvil.
 - [Identidad y permisos](docs/IDENTITY_AND_ACCESS_PROPOSAL.md), [seguridad de integraciones](docs/INTEGRATION_SECURITY_REVIEW.md) y [matriz de decisiones](docs/DECISION_APPROVAL_CHECKLIST.md).
 - [Flujo propuesto de activos](diagrams/proposed_asset_flow.mmd).
 
