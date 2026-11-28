@@ -1,5 +1,7 @@
 # Estrategia de pruebas del MVP
 
+> Los escenarios móvil→API y ZAP de este documento son heredados y no pertenecen al alcance vigente: producto web-only por D-003 y ZAP aplazado. Adaptar los escenarios aplicables a web/API; el estado real de validación está en [pendientes actuales](REMAINING_WORK_2026-11-27.md).
+
 **PROPUESTA:** preparar pruebas tras aprobar stack, contratos y entorno. Ninguna prueba de aplicación existe en las copias inspeccionadas; no hay cobertura medible. La tabla describe comportamiento por demostrar, no resultados observados. Las pruebas de seguridad usan datos sintéticos y objetivos de laboratorio autorizados; nunca infraestructura de terceros ni Active Scan. Vincular resultados a [AC-A–L](ACCEPTANCE_CRITERIA.md) y guardar evidencias sin secretos.
 
 | Tipo | Componente / prueba concreta | Resultado verificable |
