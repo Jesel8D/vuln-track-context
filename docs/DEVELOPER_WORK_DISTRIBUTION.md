@@ -1,5 +1,7 @@
 # Distribución de trabajo propuesta
 
+> **Propuesta histórica.** El plan contiene tareas móviles y ZAP que no corresponden al alcance vigente (D-003; ZAP aplazado). No tratar las asignaciones ni semanas como compromiso actual; consultar [pendientes actuales](REMAINING_WORK_2026-11-27.md).
+
 **PROPUESTA:** dos desarrolladores A y B sin atribuir habilidades ni nombres. Duración aproximada de cuatro semanas, no compromiso. La ubicación del móvil, stack, permisos, contratos y entorno están **PENDIENTE**. El plan completo y sus puertas están en [IMPLEMENTATION_MASTER_PLAN.md](IMPLEMENTATION_MASTER_PLAN.md).
 
 ## Cronograma y revisión cruzada
