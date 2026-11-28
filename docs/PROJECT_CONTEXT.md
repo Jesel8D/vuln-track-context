@@ -1,12 +1,12 @@
 # Contexto del proyecto
 
-> **Actualización de estado — 2026-11-08:** Jesel aprobó individualmente el alcance del MVP de inventario/CPE/NVD sin ZAP ni workspaces operativos en primera entrega; ratificación de Rudi y detalles técnicos siguen PENDIENTES. Véanse [registro de aprobación](MVP_APPROVAL_RECORD.md) y [contrato consolidado](VULNTRACK_MVP_CONTRACT.md). El contenido anterior que sigue se conserva como antecedente; no constituye aprobación conjunta ni habilita ZAP. D-001 y D-002 permanecen intactas.
+> **Actualización de estado — 2026-11-27:** la decisión [D-003](../context/decisions.json) establece aplicación web únicamente y descarta el cliente móvil por instrucción explícita del usuario solicitante. El alcance MVP del 2026-11-08 fue aprobado individualmente por Jesel; la ratificación de Rudi y los detalles técnicos globales siguen **PENDIENTES**. Véanse [registro de aprobación](MVP_APPROVAL_RECORD.md), [pendientes actuales](REMAINING_WORK_2026-11-27.md) y [contrato consolidado](VULNTRACK_MVP_CONTRACT.md). Las referencias móviles de documentos previos son antecedentes hasta su actualización; no describen el alcance vigente.
 
 **ESTABLECIDA:** VulnTrack es un proyecto académico de gestión y seguimiento de vulnerabilidades informáticas. Busca registrar activos tecnológicos, consultar vulnerabilidades asociadas a productos y versiones mediante NVD y realizar análisis web controlados con OWASP ZAP Baseline.
 
-**ESTABLECIDA:** dos desarrolladores disponen de aproximadamente cuatro semanas. La prioridad es el flujo aplicación móvil → API → PostgreSQL → aplicación web. La distribución semanal y las responsabilidades individuales están **PENDIENTE** de aprobación.
+**ESTABLECIDA:** VulnTrack se trabajará como aplicación web. No se desarrollará una aplicación móvil dentro del proyecto (D-003). El flujo vigente es navegador web → API → PostgreSQL. La distribución semanal y las responsabilidades individuales están **PENDIENTE** de aprobación.
 
-**ESTABLECIDA:** la aplicación móvil registra activos desde campo y los envía al backend; la web administra y consulta activos, permite la selección asistida de CPE, consulta CVE y visualiza hallazgos y análisis; el backend centraliza lógica, consultas externas y persistencia. PostgreSQL es la base de datos contemplada en el alcance; su adopción técnica está clasificada como **PROPUESTA**. La arquitectura y el detalle de administración están en [arquitectura](ARCHITECTURE.md) y [requisitos](REQUIREMENTS.md).
+**ESTABLECIDA:** la aplicación web administra activos y aplicaciones, permite la selección asistida de CPE, consulta CVE mediante el backend cuando NVD live se habilita y muestra el historial disponible. El backend centraliza la lógica, las consultas externas y la persistencia. La arquitectura implementada usa React/Vite/TypeScript, FastAPI y PostgreSQL; las decisiones de operación y los riesgos abiertos se detallan en [arquitectura](ARCHITECTURE.md) y [pendientes actuales](REMAINING_WORK_2026-11-27.md).
 
 ## Repositorios
 
