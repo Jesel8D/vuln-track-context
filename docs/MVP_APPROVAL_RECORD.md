@@ -30,6 +30,10 @@ MVP-013 pospone Baseline, incluido en REQUIREMENTS e IMPLEMENTATION_MASTER_PLAN 
 
 No se documentó aprobación de sustituir el flujo móvil→API→web: debe mantenerse como prioridad o acordarse un recorte explícito. D-001 preserva contexto independiente; D-002 distribuye responsabilidades por tipo de artefacto, no limita quién puede colaborar en cada repositorio.
 
+## Cambio de alcance posterior — 2026-11-27
+
+El usuario solicitante indicó explícitamente «descarta lo movil, solo quedará en web». La decisión D-003 registra ese alcance web-only y reemplaza la prioridad móvil para el trabajo vigente. Se conserva el texto y el estado histórico de MVP-001–MVP-013; la ratificación técnica global por Rudi continúa **PENDIENTE**. Este cambio no habilita ZAP ni autoriza el despliegue público.
+
 ## Ratificación futura
 
 Rudi: ____________________ Fecha: ____________________ Observaciones/decisiones ratificadas: ____________________
