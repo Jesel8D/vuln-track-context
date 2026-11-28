@@ -1,4 +1,6 @@
-# Auditoría real de repositorios
+# Auditoría histórica de repositorios
+
+> Esta auditoría corresponde a una instantánea del **30-10-2026** y no describe el estado actual. Sus observaciones de repositorios vacíos y falta de implementación quedaron supersedidas. Para el estado y trabajo faltante vigente, consultar [REMAINING_WORK_2026-11-27.md](REMAINING_WORK_2026-11-27.md) y la [revisión de controles de seguridad](SECURITY_CONTROLS_REVIEW_2026-11-27.md). Se conserva el resto como registro histórico, sin borrar la evidencia de lo que se encontró entonces.
 
 Instantánea de inspección: 30-10-2026, antes de crear la rama de este trabajo. **Hecho verificado:** se consultaron los cuatro repositorios locales, sus remotos, estado, ramas, archivos rastreados y archivos de trabajo; `git ls-remote --symref origin HEAD 'refs/heads/*'` terminó correctamente para cada repositorio de implementación y no devolvió HEAD ni ramas. Eso solo describe referencias visibles en el momento de la consulta; no demuestra que no existan objetos o referencias no anunciadas en el servidor. No se alteraron esos repositorios.
 
