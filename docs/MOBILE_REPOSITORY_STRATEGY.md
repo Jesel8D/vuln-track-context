@@ -1,5 +1,7 @@
 # Ubicación de la aplicación móvil
 
+> **Documento supersedido por D-003 (2026-11-27).** VulnTrack queda solo web y no se creará cliente móvil ni repositorio móvil. Se conserva esta comparación como antecedente; no implementar sus propuestas.
+
 **PENDIENTE:** ubicación y organización. Ninguna opción está aprobada. El repositorio `frontend` no contiene código en la inspección del 30-10-2026; no se creó ningún directorio.
 
 | Opción | Equipo y CI/CD | Tipos/contratos y dependencias | Versionado y costos |
