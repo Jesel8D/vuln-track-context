@@ -1,20 +1,20 @@
 # Arquitectura
 
-> **Actualización de estado — 2026-11-08:** Jesel aprobó individualmente el alcance del MVP de inventario/CPE/NVD sin ZAP ni workspaces operativos en primera entrega; ratificación de Rudi y detalles técnicos siguen PENDIENTES. Véanse [registro de aprobación](MVP_APPROVAL_RECORD.md) y [contrato consolidado](VULNTRACK_MVP_CONTRACT.md). El contenido anterior que sigue se conserva como antecedente; no constituye aprobación conjunta ni habilita ZAP. D-001 y D-002 permanecen intactas.
+> **Actualización de estado — 2026-11-27:** D-003 aprueba producto web únicamente y descarta cliente móvil. La arquitectura que sigue combina estado implementado y antecedentes; no habilita ZAP ni despliegue público. Véanse [decisiones](DECISIONS_AND_OPEN_QUESTIONS.md) y [pendientes actuales](REMAINING_WORK_2026-11-27.md).
 
-**PROPUESTA:** arquitectura modular cliente-servidor, con aplicación móvil y web que utilizan un backend para lógica de negocio, integraciones y persistencia. El diagrama [architecture.mmd](../diagrams/architecture.mmd) muestra el flujo conceptual, no un contrato de conexiones definitivo.
+**ESTABLECIDA (alcance):** aplicación web cliente-servidor. Navegador web → API → PostgreSQL; no existe cliente móvil en el alcance actual (D-003). El diagrama [architecture.mmd](../diagrams/architecture.mmd) conserva un flujo conceptual histórico y no representa conexión directa del navegador a PostgreSQL.
 
 ## Componentes y tecnologías
 
-- **ESTABLECIDA:** la aplicación móvil registra activos y conserva lo introducido ante fallos de envío. **PROPUESTA:** React Native, Expo y TypeScript.
-- **ESTABLECIDA:** la web consulta y administra activos, presenta candidatos CPE, CVE potenciales, dashboard y resultados de análisis. Actualización detallada y eliminación están **PENDIENTE** de definición. **PROPUESTA:** React, Vite y TypeScript.
-- **ESTABLECIDA:** el backend centraliza lógica, consultas externas y persistencia. **PROPUESTA:** Python y FastAPI; SQLAlchemy y Alembic para modelos y migraciones. **APROBADA:** D-002 sitúa dichos modelos y migraciones en backend si se adoptan.
-- **ESTABLECIDA:** la base de datos contemplada es PostgreSQL; su adopción técnica es **PROPUESTA**. **APROBADA:** D-002 atribuye a database la configuración de PostgreSQL, inicialización, seed y documentación propia.
+- **APROBADA:** producto web únicamente; no se implementará cliente móvil (D-003).
+- **ESTABLECIDA:** la aplicación web implementada usa React, Vite y TypeScript para consultar activos, aplicaciones, identificaciones CPE e historial; los resultados CVE dependen del modo de compilación y configuración del backend. Algunas superficies siguen siendo demostrativas.
+- **ESTABLECIDA:** el backend implementado usa FastAPI y centraliza lógica, autorización, consultas externas y persistencia. SQLAlchemy y Alembic corresponden al backend (D-002).
+- **ESTABLECIDA:** PostgreSQL es la base de datos implementada; el repositorio database contiene configuración, inicialización, seeds y documentación (D-002). La actualización de bases existentes requiere validación separada.
 - **ESTABLECIDA:** NVD REST API 2.0 proporciona consultas CPE y CVE; no se replicará NVD completamente ni se presupone correspondencia automática exacta.
-- **ESTABLECIDA:** OWASP ZAP Baseline analiza solo objetivos web autorizados en lista permitida, bajo los límites de [seguridad](SECURITY_BOUNDARIES.md). **PROPUESTA:** Docker para aislar la ejecución.
+- **PENDIENTE:** ZAP Baseline no forma parte del MVP aprobado individualmente. Una fase futura requeriría nueva aprobación, autorización, controles de salida y aislamiento comprobados.
 
 ## Flujos
 
-**ESTABLECIDA:** el flujo prioritario es móvil → API → PostgreSQL → web: el backend recibe y persiste registros y la web los consulta mediante el backend. La flecha PostgreSQL → web en el diagrama representa disponibilidad conceptual de los datos, no acceso directo desde el navegador.
+**ESTABLECIDA:** el flujo vigente es navegador web → API → PostgreSQL. Los clientes web consumen la API; no se conectan directamente a PostgreSQL.
 
-**ESTABLECIDA:** el usuario selecciona un CPE entre candidatos antes de consultar CVE; los resultados son potencialmente aplicables hasta su verificación. La web solicita y consulta análisis Baseline mediante el backend. Detalles de comunicación, autenticación y ejecución están **PENDIENTE**.
+**ESTABLECIDA:** el usuario selecciona un CPE entre candidatos antes de consultar CVE; los resultados son potencialmente aplicables hasta su verificación. El cliente CVE live existe en backend y la interfaz puede compilarse para live, pero las instalaciones nuevas lo mantienen deshabilitado por defecto. ZAP no se ejecuta en el alcance actual.
