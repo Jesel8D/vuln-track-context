@@ -2,7 +2,11 @@
 
 ## Alcance y límite de esta revisión
 
-Revisión estática y documental de los repositorios Backend, Frontend, Database y Context. Se inspeccionaron autenticación, autorización, validación, consultas SQL, integración NVD, configuración de red y Docker, almacenamiento de sesión y límites operativos. No se ejecutó una prueba de penetración, no se enviaron solicitudes a activos, no se iniciaron servicios y no se volvió a escanear imágenes o dependencias. Trivy, Gitleaks, Bandit y pip-audit no están instalados en esta PC; Docker y npm están disponibles, pero no se usaron para iniciar servicios ni consultar registros de vulnerabilidades.
+Revisión estática y pruebas unitarias locales de Backend y Frontend. Se inspeccionaron autenticación, autorización, validación, consultas SQL, integración NVD, configuración de red y Docker, almacenamiento de sesión y límites operativos. No se inició el stack ni se atacaron servicios públicos o activos registrados. La instancia Docker no estaba disponible. Sí se verificaron controles de request/SSRF/NVD con pruebas locales, se consultó una vez el API oficial NVD en modo de solo lectura y se auditaron los locks Python/Node.
+
+**Pruebas locales:** Backend: 260 pruebas relevantes pasaron; se excluyeron 5 pruebas de laboratorio incompatibles con este Windows (dependen de `fcntl`/herramientas Unix o TLS local). Frontend: `npm run check` terminó correctamente con 181 pruebas, typecheck, ESLint y build. `npm audit` no reportó avisos en el árbol completo del Frontend; `pip-audit` no encontró vulnerabilidades conocidas en `requirements.lock` ni `requirements-dev.lock`. Una consulta GET al NVD oficial con un CPE público de prueba devolvió `CVE-2017-6784` como resultado real. Estos resultados no equivalen a un pentest.
+
+No se hizo DoS/DDoS ni una prueba de carga contra Internet, la instancia desplegada o un servicio compartido. Docker Scout está instalado, pero el escaneo de imágenes requiere iniciar sesión con Docker ID y no se usaron credenciales; además, el daemon Docker no estaba activo para construir y escanear las imágenes finales.
 
 Esta revisión no sustituye una auditoría independiente ni permite afirmar una calificación académica de **5/5**: no se recibió la rúbrica del profesor. El puntaje 1/5 comunicado por el equipo no aparece en los archivos consultados. Los hallazgos se clasifican por evidencia técnica, no por una equivalencia inventada con esa calificación.
 
@@ -15,7 +19,7 @@ Referencias de código revisadas antes de aplicar las correcciones de esta misi�
 | Database | `release/v1.0.0-rc1` | `b8fbcdbf3edee9ef733818517b19fe0b37ba35d4` |
 | Context | `docs/mvp-context-consolidation` | `651aa7b9dfd15e0b03f4540f4821f3ba93ab9a7f` |
 
-Los cambios de esta misión están en preparación local; esta tabla no afirma que ya estén publicados en `main`.
+La tabla conserva las bases analizadas en la primera revisión. Los commits iniciales de esta misión se publicaron en `main`; las correcciones adicionales enumeradas en esta actualización también se publican en esa rama.
 
 ## Controles observados
 
@@ -30,9 +34,14 @@ Los cambios de esta misión están en preparación local; esta tabla no afirma q
 ## Correcciones aplicadas en esta misión
 
 1. El proxy aumenta HSTS de un día a un año (`max-age=31536000`), sin `includeSubDomains`, porque el dominio y sus subdominios no están bajo esta revisión.
-2. El modo NVD de la imagen web y de Compose de producción queda `disabled` por defecto, coherente con la configuración backend de producción. Para cambiarlo se requiere habilitar explícitamente el backend y reconstruir la interfaz; `VITE_NVD_MODE` no se considera autorización.
+2. **No se modificaron las banderas NVD/CVE en esta revisión ampliada.** La ruta de consulta real permanece disponible y se verificó con una solicitud al servicio oficial. La plantilla para instalaciones nuevas conserva la configuración existente con `NVD_MODE=disabled` y `CVE_LIVE_ENABLED=false`; para usar el botón real, el operador debe habilitar el backend con `operate.py configure --cve-live on` y compilar/recrear el frontend con `VITE_NVD_MODE=live`. La bandera del frontend no habilita por sí misma el acceso del servidor.
 3. Se añadió una vista previa de la interfaz y un logotipo PNG transparente en la raíz de cada repositorio. La vista previa usa una captura existente de la interfaz y datos sintéticos, no evidencia de una consulta NVD en vivo.
 4. Se amplió el README del Backend con arquitectura, flujo NVD/CPE, endpoints, controles, limitaciones y operación.
+5. Se corrigió una incompatibilidad real de Windows: `core.autocrlf=true` convertía a CRLF varios esquemas NVD cuyo hash se comprueba byte por byte, provocando que se rechazaran todas las respuestas CVE. `.gitattributes` fija LF para los esquemas JSON; se verificaron todos los hashes y pasó el conjunto de pruebas NVD.
+6. El middleware de request ahora rechaza un `Content-Length` que supera el máximo antes de leer el cuerpo y compara cada fragmento antes de copiarlo al buffer. Se añadió una prueba que confirma la respuesta 413 sin leer el cuerpo.
+7. El Compose de producción ahora limita procesos a PostgreSQL/Catálogo (256), API (128) y Proxy (64), además de los límites de memoria y CPU ya existentes.
+8. Se actualizaron las imágenes oficiales fijadas de PostgreSQL a `16.16-alpine3.24` y de Node de compilación a `24.22.3-alpine3.24`, conservando digests inmutables. Los manifiestos se consultaron en el registro oficial; no se construyeron ni escanearon las imágenes por falta del daemon/credenciales de Scout.
+9. Se corrigió el anuncio accesible del error de confirmación de contraseña y los selectores de sus pruebas unitarias.
 
 ## Hallazgos pendientes por severidad
 
@@ -46,11 +55,11 @@ Los cambios de esta misión están en preparación local; esta tabla no afirma q
 
 ### Alto — Avisos conocidos en las imágenes fijadas
 
-**Evidencia:** `vuln-track-backend/deploy/production/SEGURIDAD_IMAGENES.md` registra un análisis local de 24–25 de noviembre de 2026: 1 CRITICAL y 45 HIGH en PostgreSQL, 53 HIGH en Backend y 2 HIGH en Caddy. El informe considera que el CRITICAL de `gosu` no es alcanzable en la función observada, pero lo conserva para reevaluación; no declara las imágenes libres de vulnerabilidades.
+**Evidencia:** `vuln-track-backend/deploy/production/SEGURIDAD_IMAGENES.md` registra un análisis local de 24–25 de noviembre de 2026: 1 CRITICAL y 45 HIGH en PostgreSQL, 53 HIGH en Backend y 2 HIGH en Caddy. El informe considera que el CRITICAL de `gosu` no es alcanzable en la función observada, pero lo conserva para reevaluación. PostgreSQL y Node ahora apuntan a tags/digests oficiales más recientes revisados el 27-11-2026; las imágenes finales todavía no se volvieron a escanear. Python y Caddy mantienen sus digests fijados.
 
 **Impacto:** los avisos deben reevaluarse contra las imágenes y rutas alcanzables del despliegue final. La evaluación documentada es fechada y no representa un escaneo actualizado al 27 de noviembre.
 
-**Estado:** no corregido. No se sustituyeron tags/digests sin identificar primero una imagen oficial parcheada y validar compatibilidad. Antes de publicar, actualizar imágenes de forma revisada, volver a escanear los digests exactos y conservar el reporte resultante.
+**Estado:** mitigación parcial. Se actualizaron PostgreSQL y Node a versiones oficiales más recientes con digest fijado. No puedo asegurar que los avisos anteriores hayan desaparecido ni que los digests nuevos estén limpios sin construir y escanear las imágenes exactas. Ejecutar Docker Scout/Trivy después de reactivar Docker y conservar el reporte actualizado antes del despliegue.
 
 ### Medio — Registro público y abuso de cuentas
 
@@ -98,4 +107,4 @@ El contexto de aprobación conserva pendientes la ratificación técnica global 
 
 ## Cierre
 
-Se corrigieron dos valores predeterminados de seguridad y se documentó el resto con evidencia. Quedan hallazgos de infraestructura, imágenes, abuso de registro y revocación que impiden afirmar “muy seguro” en sentido absoluto o una nota de 5/5 sin rúbrica. El resultado actual es un **candidato con controles relevantes y riesgos explícitos**, no una certificación ni autorización de despliegue público.
+Se corrigieron el rechazo temprano de cuerpos sobredimensionados, el límite de procesos de contenedores y el bloqueo de respuestas NVD por finales de línea en Windows; también se actualizaron dos imágenes base. Pasaron las pruebas locales indicadas y los audits de dependencias no encontraron vulnerabilidades conocidas. Siguen pendientes el filtro de egress, el escaneo de imágenes finales, un test de penetración autorizado en un entorno aislado, control compartido de abuso, revocación JWT, infraestructura/backups y decisión de operación de NVD live. No se hizo DDoS ni pruebas contra activos desplegados. El resultado es un **candidato con controles relevantes y brechas documentadas**, no una certificación ni autorización de despliegue público.
