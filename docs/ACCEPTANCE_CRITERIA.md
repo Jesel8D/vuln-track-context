@@ -1,5 +1,7 @@
 # Criterios de aceptación y casos de uso
 
+> **Criterios heredados.** Los flujos que exigen cliente móvil y ejecución de ZAP no forman parte del alcance vigente por D-003 y la aprobación individual del MVP; se conservan como antecedentes y requieren nueva aprobación para reabrirse. Para alcance vigente y brechas observadas, consultar [pendientes actuales](REMAINING_WORK_2026-11-27.md).
+
 Las reglas señaladas ESTABLECIDA provienen del alcance; los escenarios, validaciones y comportamientos concretos son **PROPUESTA** para revisión. Credenciales, persistencia local, catálogo de errores y plazos siguen **PENDIENTE**. Los datos de prueba deben ser sintéticos y ZAP solo debe usarse en un entorno de prueba autorizado.
 
 ## AC-A — Registro móvil
