@@ -1,9 +1,5 @@
 # VulnTrack: contexto central
 
-## About
-
-Repositorio central de documentación y coordinación de VulnTrack. Reúne el contexto del proyecto, requisitos, decisiones, arquitectura, límites de seguridad, auditorías y diagramas compartidos por los repositorios de backend, frontend y base de datos.
-
 ## Continuación y estado actual — 2026-11-08
 
 **Contrato del MVP aprobado por Jesel, pendiente de ratificación por Rudi.** Aprobación individual de alcance, detalle técnico PROPUESTA y estado conjunto PENDIENTE; D-001/D-002 se conservan.
