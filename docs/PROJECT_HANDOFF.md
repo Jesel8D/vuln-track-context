@@ -1,5 +1,7 @@
 # VulnTrack — estado para retomar
 
+> **Antecedente histórico — 2026-11-08.** Este handoff contiene ramas y estado previos a la implementación que está en `main`. Para el estado vigente, usar [PROJECT_MASTER_CONTEXT.md](PROJECT_MASTER_CONTEXT.md), [REMAINING_WORK_2026-11-27.md](REMAINING_WORK_2026-11-27.md) y la decisión web-only [D-003](../context/decisions.json). No ejecutar los planes ni comandos de este handoff sin revalidarlos.
+
 Registro 2026-11-08. **Contrato del MVP aprobado por Jesel, pendiente de ratificación por Rudi.** Solo alcance y principios/conformidades expresas en MVP_APPROVAL_RECORD.md; detalle técnico y acuerdo global PENDIENTES. No se habilita producción.
 
 ## Producto y contrato
